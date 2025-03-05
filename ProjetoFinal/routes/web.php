@@ -8,5 +8,5 @@ Route::get('/', function () {
 
 
 Route::get('/index', function () {
-    return view('layout.fo_layout');
+    return view('layout.layout_marcos');
 });

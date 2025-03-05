@@ -46,4 +46,9 @@ footer{
     font-style: italic;
 }
 
+.td {
+    background-color: blueviolet;
+    color: aliceblue;
+    margin: 20px;
+}
 
