@@ -46,7 +46,17 @@
                 </div>
             </div>
         </nav>
+
+        {{-- container para o conteudo nao ficar colado a lateral --}}
+        <br>
+        <div class="container body-div">
+            {{-- chamar o conteudo // 'content' é o nome que vai chamar --}}
+            @yield('content')
+        </div>
     </div>
+
+    
+    
 
     <div>
         <div>
