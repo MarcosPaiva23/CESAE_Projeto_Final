@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
@@ -30,3 +31,7 @@ Route::get('about', [AboutController::class, 'index']) -> name('about');
 Route::get('/dashboard-passageiro', [DashboardController::class, 'showDriverTable'])->name('showDriverTable');
 
 Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
+//rotas para autenticação e registro
+Route::get('/register', [UserController::class, 'viewRegister'] )->name('register');
+
+Route::post('/create-users', [UserController::class, 'createUser'] )->name('users.create');
