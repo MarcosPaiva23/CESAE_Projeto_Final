@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Site Uber Cesae</title>
+    <title>CESAE Boleias</title>
 
     {{-- bottstrap --}}
-    <link rel="stylesheet" href="{{asset('bootstrap/css/bootstrap.min.css')}}">
-    <script src="{{asset('bootstrap/js/bootstrap.bundle.min.js')}}" defer></script>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
 
     {{-- css main --}}
-    <link rel="stylesheet" href="{{asset('css/css2.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
 
 </head>
+
 <body>
 
     <div class="main-content">
@@ -22,12 +24,12 @@
                 <div class="d-flex d-lg-none" style="width: 40px;"></div>
 
                 <a class="navbar-brand mx-auto" href="/">
-                    <img src="{{ asset('images/cesae_boleias.png') }}" alt="CESAE Digital Logo">
+                    <img src="{{ asset('img/cesae_boleias_full.png') }}" alt="CESAE Digital Logo">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -46,41 +48,12 @@
                 </div>
             </div>
         </nav>
-    </div>
-
-    <div>
-        <div>
-            <table class="table   table-hover table-success" >
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </tbody>
-              </table>
+        <div class="container mt-4">
+            @yield('content')
         </div>
     </div>
+
+
 
 
     <footer>
@@ -88,7 +61,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="footer-logo">
-                        <img src="{{ asset('images/cesae_boleias.png') }}" alt="CESAE Digital Logo">
+                        <img src="{{ asset('img/cesae_boleias_normal.png') }}" alt="CESAE Digital Logo">
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -119,4 +92,5 @@
         </div>
     </footer>
 </body>
+
 </html>
