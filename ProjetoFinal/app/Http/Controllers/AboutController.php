@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -12,9 +12,9 @@ class HomeController extends Controller
     public function index()
     {
 
-        return view('home');
-
+        return view('about');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -37,7 +37,7 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        return view ('show');
+        //
     }
 
     /**

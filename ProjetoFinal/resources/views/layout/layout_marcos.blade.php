@@ -36,7 +36,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Sobre</a>
+                            <a class="nav-link"href={{route('home')}}>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href={{route('about')}}>Sobre</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Login</a>
