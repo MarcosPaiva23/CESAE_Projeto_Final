@@ -27,3 +27,6 @@ Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.st
 // Route::get('feedback', [FeedbackController::class, 'index']) -> name('feedback')->middleware('auth');
 
 Route::get('about', [AboutController::class, 'index']) -> name('about');
+Route::get('/dashboard-passageiro', [DashboardController::class, 'showDriverTable'])->name('showDriverTable');
+
+Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
