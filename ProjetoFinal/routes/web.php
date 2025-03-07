@@ -12,4 +12,6 @@ Route::get('/index', function () {
     return view('layout.layout_marcos');
 });
 
-Route::get('/dashboard-passageiro', [DashboardController::class, 'showConductorTable'])->name('showconductorTable');
+Route::get('/dashboard-passageiro', [DashboardController::class, 'showDriverTable'])->name('showDriverTable');
+
+Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
