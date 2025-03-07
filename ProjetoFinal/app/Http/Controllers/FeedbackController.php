@@ -13,8 +13,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedbacks = $this->getAllFeedbacks();
-        return view('feedback.index', compact ('feedbacks'));
+        $feedbacks = DB::table('feedback')->get();
+        // $feedbacks = $this->getAllFeedbacks();
+        return view('feedback', compact ('feedbacks'));
     }
 
     /**
@@ -31,19 +32,28 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'assunto' => 'required|string|max:100',
-            'comentario' => 'required|string|max:255',
+            'subject' => 'required|string|max:100',
+            'comment' => 'required|string|max:255',
         ]);
 
-       Feedback::create([
+    //    Feedback::create([
+    //     'user_id' => Auth::id(),
+    //     'user_email' => Auth::user()->email,
+    //     'comment' => $request -> comment,
+    //     'subject' => $request -> subject,
+
+    //    ]);
+
+       DB::table('feedback')->insert([
         'user_id' => Auth::id(),
         'user_email' => Auth::user()->email,
-        'comentario' => $request -> comentario,
-        'assunto' => $request -> assunto,
+        'comment' => $request->comment,
+        'subject' => $request->subject,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
 
-       ]);
-
-        return redirect()->route('feedback.index')->with('success', 'Feedback enviado com sucesso!');
+        return redirect()->route('feedback')->with('success', 'Feedback enviado com sucesso!');
 
     }
 
@@ -86,6 +96,6 @@ class FeedbackController extends Controller
         ->where('id', $id)
         ->delete();
 
-        return redirect()->route('feedback.index')->with('success', 'Feedback apagado com sucesso');
+        return redirect()->route('feedback')->with('success', 'Feedback apagado com sucesso');
     }
 }
