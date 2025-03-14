@@ -1,9 +1,26 @@
 @extends('layout.main_layout')
 @section('content')
+
+    {{-- To show messages and erros coming from other pages o redirect to home --}}
+    @if (session('error'))
+        <div class="alert alert-danger text-center">
+            <h3>{{session('error')}}</h3>
+        </div>
+        <br>
+    @endif
+
+    @if (session('message'))
+        <div class="alert alert-success text-center">
+            <h3>{{session('message')}}</h3>
+        </div>
+        <br>
+    @endif
+
+
 <div class="container mt-4">
     <div class="row">
         <!-- Coluna Esquerda - Conteúdo -->
-        <div class="col-md-6">
+        <div class="col-md">
             <div class="conteudo">
                 <br>
                 <h6><img src="{{asset('img/ride-hailing.png')}}" alt="Ride" class="icon-ride">Bem-vindo ao CESAE Boleias!</h6>
@@ -23,25 +40,32 @@
             </div>
         </div>
 
-        <!-- Coluna Direita - Barra e Menu -->
-        <div class="col-md-6">
-            <div class="barra mt-4 text-center">
-                <h5>O que pretendes fazer hoje?</h5>
-            </div>
+        @if (Route::has('login'))
+            @auth
 
-            <div class="menu mt-4">
-                <div class="container text-center">
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="{{ route('feedback') }}">
-                                <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
-                                Deixar feedback
-                            </a>
-                        </li>
-                    </ul>
+                <!-- Coluna Direita - Barra e Menu -->
+                <div class="col-md">
+                    <div class="barra mt-4 text-center">
+                        <h5>O que pretendes fazer hoje?</h5>
+                    </div>
+
+                    <div class="menu mt-4">
+                        <div class="container text-center">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <a href="{{ route('feedback') }}">
+                                        <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                        Deixar feedback
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+
+            @endauth
+        @endif
+
     </div>
 </div>
 @endsection

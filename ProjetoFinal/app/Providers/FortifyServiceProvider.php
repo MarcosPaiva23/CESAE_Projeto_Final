@@ -2,25 +2,35 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use App\Actions\Fortify\CreateNewUser;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Cache\RateLimiting\Limit;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
-use App\Actions\Fortify\UpdateUserProfileInformation;
-use Illuminate\Cache\RateLimiting\Limit;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Str;
-use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Contracts\LoginResponse;
+use Illuminate\Validation\ValidationException;
+use App\Actions\Fortify\UpdateUserProfileInformation;
 
 class FortifyServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      */
     public function register(): void
     {
-        //
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                return redirect('/');
+            }
+        });
     }
 
     /**
@@ -59,5 +69,33 @@ class FortifyServiceProvider extends ServiceProvider
             return view(('auth.password_new'));
         });
 
+
+        Fortify::authenticateUsing(function (Request $request) {
+            // Find the user by email
+            $user = DB::table('users')->where('email', $request->email)->first();
+
+            // Check if the user exists and the password is correct
+            if ($user && Hash::check($request->password, $user->password)) {
+                // Check if the user is blocked
+                if ($user->is_blocked) {
+                    throw ValidationException::withMessages([
+                        'error' => ['Esta conta foi bloqueada por um administrador.'],
+                    ]);
+                }
+
+                // Check if the email is verified
+                if (!$user->email_verified_at) {
+                    throw ValidationException::withMessages([
+                        'error' => ['Por favor, verifique o seu email.'],
+                    ]);
+                }
+                
+                // Return user model for successful login
+                return \App\Models\User::find($user->id);
+            }
+        });
+
     }
+
+    
 }
