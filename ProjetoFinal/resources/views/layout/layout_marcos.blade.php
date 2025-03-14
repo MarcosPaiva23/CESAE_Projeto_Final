@@ -36,7 +36,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Sobre</a>
+                            <a class="nav-link"href={{route('home')}}>Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link"href={{route('about')}}>Sobre</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Login</a>
@@ -48,15 +51,20 @@
                 </div>
             </div>
         </nav>
-        <div class="container mt-4">
+
+
+        {{-- container to insert the blades template --}}
+        <br>
+        <div class="container body-div">
+            {{-- call for the content to show --}}
+
             @yield('content')
         </div>
     </div>
 
 
-
-
     <footer>
+
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
