@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
@@ -18,6 +19,9 @@ Route::get('/', function () {
 Route::get('/index', function () {
     return view('layout.layout_marcos');
 });
+
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');//->middleware(['auth', 'admin']);
 
 
 

@@ -1,0 +1,14 @@
+.cesae-purple
+{
+background-color: #6a2c70;
+   color: white;
+}
+
+.table-image {
+    max-width: 50px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+}
