@@ -92,7 +92,6 @@ class UserController extends Controller
             }
             
             
-            // return redirect()->route('login')->with('error', 'URL inválida ou expirada.');
         }
 
         
