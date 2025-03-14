@@ -41,12 +41,59 @@
                         <li class="nav-item">
                             <a class="nav-link"href={{route('about')}}>Sobre</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/register">Registar</a>
-                        </li>
+
+
+
+                        @if (Route::has('login'))
+                                @auth
+
+
+
+                                    @if (Auth::user()->is_admin == 1)
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/admin">Dashboard</a>
+                                        </li>
+
+                                        @else
+
+                                        @if (Auth::user()->tem_carro == 1)
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/dashboard-condutor">Matches</a>
+                                        </li>
+
+                                        @else
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/dashboard-passageiro">Matches</a>
+                                        </li>
+                                        @endif
+
+                                    @endif
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Definições</a>
+                                    </li>
+
+
+                                    <form name="logout" id="logout" action="{{ route('logout')}}" method="POST">
+                                        @csrf
+                                        <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
+                                    </form>
+
+                                @else
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/login">Login</a>
+                                    </li>
+
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/register">Registar</a>
+                                        </li>
+                                    @endif
+                                @endauth
+                        @endif
+
+
                     </ul>
                 </div>
             </div>
