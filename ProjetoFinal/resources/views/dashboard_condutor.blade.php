@@ -1,4 +1,4 @@
-@extends('layout.layout_marcos')
+@extends('layout.main_layout')
 @section('content')
     <div class="row justify-content-center align-items-center">
         <table class="table table-striped table-hover">
