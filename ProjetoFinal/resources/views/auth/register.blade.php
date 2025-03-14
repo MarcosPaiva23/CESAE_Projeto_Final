@@ -89,19 +89,19 @@
             <label  class="form-label">Dias com disponivilidade ou que quer boleia: </label>
             <div class="row text-center">
                 <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="segunda" name="segunda"> Segunda</label>
+                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="monday" name="monday"> Segunda</label>
                 </div>
                 <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="terca" name="terca"> Terça</label>
+                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="tuesday" name="tuesday"> Terça</label>
                 </div>
                 <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="quarta" name="quarta"> Quarta</label>
+                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="wednesday" name="wednesday"> Quarta</label>
                 </div>
                 <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="quinta" name="quinta"> Quinta</label>
+                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="thursday" name="thursday"> Quinta</label>
                 </div>
                 <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="sexta" name="sexta"> Sexta</label>
+                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="friday" name="friday"> Sexta</label>
                 </div>
             </div>
         </div>
