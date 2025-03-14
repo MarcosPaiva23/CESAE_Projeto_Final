@@ -49,12 +49,21 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
+
+        {{-- container to insert the blades template --}}
+        <br>
+        <div class="container body-div">
+            {{-- call for the content to show --}}
+
+            @yield('content')
+        </div>
     </div>
 
 
 
+    {{-- footer --}}
     <footer>
+
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
