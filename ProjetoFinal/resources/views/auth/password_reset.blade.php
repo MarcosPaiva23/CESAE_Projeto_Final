@@ -20,7 +20,7 @@
             <input type="email" class="form-control" id="email" name="email">
             {{-- email error show --}}
         @error('email')
-            Email invalido
+            <p class="form-error">Email invalido</p>
         @enderror
         </div>
         
