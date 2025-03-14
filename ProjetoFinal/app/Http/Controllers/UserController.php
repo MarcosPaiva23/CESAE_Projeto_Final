@@ -68,6 +68,47 @@ class UserController extends Controller
         //create the new user with user model
         $user = User::create($userData);
 
+        //switch on of the checkbox for to boolean
+        if ($request->monday == "on") {
+            $request->monday = 1;
+        }else{
+            $request->monday = 0;
+        }
+
+        if ($request->tuesday == "on") {
+            $request->tuesday = 1;
+        }else{
+            $request->tuesday = 0;
+        }
+
+        if ($request->wednesday == "on") {
+            $request->wednesday = 1;
+        }else{
+            $request->wednesday = 0;
+        }
+
+        if ($request->thursday == "on") {
+            $request->thursday = 1;
+        }else{
+            $request->thursday = 0;
+        }
+
+        if ($request->friday == "on") {
+            $request->friday = 1;
+        }else{
+            $request->friday = 0;
+        }
+
+        //add days to the user in the days table
+        DB::table('dias_viagem')->insert([
+            'user_id' => $user->id,
+            'segunda' => $request->monday,
+            'terca' => $request->tuesday,
+            'quarta' => $request->wednesday,
+            'quinta' => $request->thursday,
+            'sexta' => $request->friday
+        ]);
+
         //send the email verification
         $user->sendEmailVerificationNotification();
 
