@@ -30,7 +30,35 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validate the request data
+        $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|max:255'
+        ]);
+
+        //create the data to store in the database
+        $userData = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'curso' => "admin",
+            'data_conclusao' => "0000-00-00",
+            'horario' => 9,
+            'tem_carro' => 9,
+            'morada' => "admin",
+            'created_at' => now(),
+            'updated_at' => now()
+        ];
+
+
+        //create the new user with user model
+        $user = User::create($userData);
+
+        //send the email verification
+        $user->sendEmailVerificationNotification();
+
+        return back()->with('message','Conta criada com sucesso.');
     }
 
     /**

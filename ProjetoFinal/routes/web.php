@@ -43,3 +43,4 @@ Route::get('/email/verify/{id}/{hash}', [UserController::class, 'verifyUserEmail
 Route::POST('/email/resend', [UserController::class, 'verifyUserEmailResend'])->name('verification.resend');
 
 
+
