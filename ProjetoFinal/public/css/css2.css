@@ -7,15 +7,20 @@ body {
 body {
     display: flex;
     flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
 }
 
 .main-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #2c3e50;
+.body-div {
+    flex: 1;
+    padding-bottom: 60px;
 }
 
 .navbar {
@@ -109,8 +114,6 @@ h6 {
     margin: 0;
 }
 
-
-
 .icon-login {
     width: 40px;
     height: 40px;
@@ -195,9 +198,7 @@ a:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     height: 50vh;
     margin-top: 40px;
-
 }
-
 
 .icon-feedback {
     width: 40px;
