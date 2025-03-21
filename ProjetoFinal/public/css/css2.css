@@ -1,3 +1,25 @@
+/* Cores do CESAE Boleias */
+.cesae-purple {
+    background-color: #6a2c70;
+    color: white;
+  }
+
+  .cesae-purple:hover {
+    background-color: #56235b;
+    color: white;
+  }
+
+  .cesae-blue {
+    background-color: #00a8e8;
+    color: white;
+  }
+
+  .cesae-blue:hover {
+    background-color: #0077b6;
+    color: white;
+  }
+
+
 html,
 body {
     height: 100%;
