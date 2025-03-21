@@ -8,6 +8,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FeedbackController;
 
+use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDriverController;
 
@@ -21,6 +22,8 @@ Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.cre
 Route::post('/store-admin', [AdminController::class, 'store'])->name('admin.store');
 
 Route::get('/', [HomeController::class, 'index']) -> name('home');
+
+Route::post('/settings/update', [SettingsController::class, 'update'])->name('settings.update')->middleware(['auth']);
 
 Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback');
 Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store');

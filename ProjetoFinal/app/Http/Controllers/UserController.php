@@ -18,7 +18,7 @@ class UserController extends Controller
 
     //function to create a new user
     public function createUser(Request $request){
-        
+
         //validate the request data
         $request->validate([
             'name' => 'required|max:255',
@@ -38,8 +38,8 @@ class UserController extends Controller
         $photo = null;
 
         //check if the request has a photo
-        if($request->hasFile('photo')){
-            $photo = Storage::putFile('user_images', $request->photo);
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo')->store('user_images', 'public');
         }
 
         //combinate the first 4 digits with the last 3 digits of the postcode to store in the database
@@ -126,16 +126,16 @@ class UserController extends Controller
             if (sha1($user->email) === request('hash')) {
 
                 return view('auth.expired_verification', compact('id', 'hash'));
-                
+
             } else {
-    
+
                 return redirect()->route('login')->with('error', 'Ocurreu um erro na validação do email.');
             }
-            
-            
+
+
         }
 
-        
+
 
         //check if the user hash is correct
         if (sha1($user->email) === request('hash')) {
@@ -152,11 +152,11 @@ class UserController extends Controller
             return redirect()->route('login')->with('error', 'Ocurreu um erro na validação do email.');
         }
 
-        
+
     }
 
     public function verifyUserEmailResend(Request $request){
-        
+
         $id = $request->id;
         $hash = $request->hash;
 
@@ -176,7 +176,7 @@ class UserController extends Controller
 
 
 
-        
+
     }
 
 }
