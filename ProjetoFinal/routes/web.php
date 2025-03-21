@@ -16,7 +16,9 @@ use App\Http\Controllers\DashboardDriverController;
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');//->middleware(['auth', 'admin']);
 
+Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.create');//->middleware(['auth', 'admin'])
 
+Route::post('/store-admin', [AdminController::class, 'store'])->name('admin.store');
 
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 
