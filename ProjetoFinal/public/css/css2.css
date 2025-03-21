@@ -215,3 +215,7 @@ a:hover {
     gap: 32px;
     margin-top: 50px;
 }
+
+.form-error{
+    color: red;
+}
