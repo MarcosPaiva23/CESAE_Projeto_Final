@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CESAE Boleias</title>
-
     {{-- bottstrap --}}
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
@@ -41,63 +39,32 @@
                         <li class="nav-item">
                             <a class="nav-link"href={{ route('about') }}>Sobre</a>
                         </li>
-
-
-
-                        @if (Route::has('login'))
-                            @auth
-
-                                @if (Auth::user()->is_admin == 1)
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/admin">Dashboard</a>
-                                    </li>
-                                @else
-                                    @if (Auth::user()->is_blocked == 0)
-                                        @if (Auth::user()->tem_carro == 1)
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/dashboard-condutor">Matches</a>
-                                            </li>
-                                        @else
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="/dashboard-passageiro">Matches</a>
-                                            </li>
-                                        @endif
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#">Definições</a>
-                                        </li>
-                                    @endif
-                                @endif
-
-                                <form name="logout" id="logout" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <a class="nav-link" href="#"
-                                        onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
-                                </form>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/login">Login</a>
-                                </li>
-
-                                @if (Route::has('register'))
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="/register">Registar</a>
-                                    </li>
-                                @endif
-                            @endauth
-                        @endif
-
+                        <form name="logout" id="logout" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <a class="nav-link" href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
+                        </form>
                     </ul>
                 </div>
             </div>
         </nav>
 
+        <div class="container mt-4">
+            <div class="row">
+                <!-- Coluna Esquerda - Conteúdo -->
+                <div class="col-md">
+                    <div class="conteudo">
+                        <br>
+                        <h6>Não tens permissões para aceder as funcionalidades do site</h6>
+                        <br>
 
-        {{-- container to insert the blades template --}}
-        <br>
-        <div class="container body-div">
-            {{-- call for the content to show --}}
+                        <p>Foste bloqueado por um administrador. Para mais informações, contacte cesaeboleias@cesae.com</p>
 
-            @yield('content')
+                    </div>
+                </div>
+                <br>
+
+            </div>
         </div>
     </div>
 

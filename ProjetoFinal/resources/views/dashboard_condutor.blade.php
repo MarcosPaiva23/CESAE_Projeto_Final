@@ -13,8 +13,8 @@
             </thead>
             <tbody>
                 @foreach ($passengers as $currentPassenger)
-                    {{-- @auth
-                        @if (Auth::user()->horario == $currentPassenger->horario) --}}
+                    @auth
+                        @if (Auth::user()->horario == $currentPassenger->horario)
                             <tr>
                                 <td>{{ $currentPassenger->foto }}</td>
                                 <td>{{ $currentPassenger->name }}</td>
@@ -24,8 +24,8 @@
                                     <a class="btn btn-info" href="">Conversar</a>
                                 <td>
                             </tr>
-                        {{-- @endif
-                    @endauth --}}
+                        @endif
+                    @endauth
                 @endforeach
             </tbody>
         </table>

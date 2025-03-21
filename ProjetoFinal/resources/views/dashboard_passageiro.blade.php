@@ -13,8 +13,8 @@
             </thead>
             <tbody>
                 @foreach ($drivers as $currentDriver)
-                    {{-- @auth
-                        @if (Auth::user()->horario == $currentDriver->horario) --}}
+                    @auth
+                        @if (Auth::user()->horario == $currentDriver->horario)
                             <tr>
                                 <td>{{ $currentDriver->foto }}</td>
                                 <td>{{ $currentDriver->name }}</td>
@@ -24,8 +24,8 @@
                                     <a class="btn btn-info" href="">Conversar</a>
                                 <td>
                             </tr>
-                        {{-- @endif
-                    @endauth --}}
+                        @endif
+                    @endauth
                 @endforeach
             </tbody>
         </table>
