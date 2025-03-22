@@ -12,8 +12,7 @@
             <!-- Toggle de "ocupado" -->
             <div class="mb-4 form-check form-switch">
               <input class="form-check-input" type="checkbox" id="busyToggle" name="is_busy" value="1"
-                {{ auth()->user()->is_busy ? 'checked' : '' }}
-                onchange="toggleDays(this.checked)">
+                {{ auth()->user()->is_busy ? 'checked' : '' }}>
               <label class="form-check-label fw-bold" for="busyToggle">
                 Estou Indisponível
               </label>
@@ -66,25 +65,3 @@
       </div>
     </div>
   </div>
-
-  <script>
-    function toggleDays(isBusy) {
-      const dayCheckboxes = document.querySelectorAll('.day-checkbox');
-      const daysSection = document.getElementById('daysSection');
-
-      // Se ocupado/busy, desativa as checkboxes dos dias e limpa-as
-      if (isBusy) {
-        dayCheckboxes.forEach(checkbox => {
-          checkbox.checked = false;
-          checkbox.disabled = true;
-        });
-        daysSection.style.opacity = '0.5';
-      } else {
-        // Se desocupado, ativa as checkboxes
-        dayCheckboxes.forEach(checkbox => {
-          checkbox.disabled = false;
-        });
-        daysSection.style.opacity = '1';
-      }
-    }
-  </script>

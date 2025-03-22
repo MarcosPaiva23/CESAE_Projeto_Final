@@ -153,6 +153,8 @@
     <?php if(auth()->guard()->check()): ?>
     <?php echo $__env->make('settings_modal', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 <?php endif; ?>
+
+<script src="<?php echo e(asset('js/settings.js')); ?>"></script>
 </body>
 
 </html>

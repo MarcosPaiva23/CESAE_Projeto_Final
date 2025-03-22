@@ -153,6 +153,8 @@
     @auth
     @include('settings_modal')
 @endauth
+
+<script src="{{ asset('js/settings.js') }}"></script>
 </body>
 
 </html>
