@@ -47,8 +47,8 @@ class FeedbackController extends Controller
        DB::table('feedback')->insert([
         'user_id' => Auth::id(),
         'user_email' => Auth::user()->email,
-        'comment' => $request->comment,
-        'subject' => $request->subject,
+        'comentario' => $request->comment,
+        'assunto' => $request->subject,
         'created_at' => now(),
         'updated_at' => now(),
     ]);

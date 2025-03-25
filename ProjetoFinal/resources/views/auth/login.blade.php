@@ -1,19 +1,15 @@
 @extends('layout.main_layout')
 
 @section('content')
-    @if (session('error'))
-        <div class="alert alert-danger text-center">
-            <h3>{{session('error')}}</h3>
-        </div>
-        <br>
-    @endif
 
-    @if (session('message'))
-        <div class="alert alert-success text-center">
-            <h3>{{session('message')}}</h3>
+    @error('error')
+        <div class="alert alert-danger text-center">
+            <h3>{{ $message }}</h3>
         </div>
         <br>
-    @endif
+    <br>
+    @enderror
+    
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

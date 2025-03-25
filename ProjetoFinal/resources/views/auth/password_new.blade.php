@@ -8,7 +8,7 @@
         <div class="mb-3">
             <input type="hidden" class="form-control" id="email" name="email" value="{{ request()->email }}"  readonly>
             @error('email')
-                Email invalido
+                <p class="form-error">Email invalido</p>
             @enderror
         </div>
         {{-- new password --}}
@@ -16,7 +16,7 @@
             <label  class="form-label">Password: </label>
             <input type="password" class="form-control" id="password" name="password">
             @error('password')
-                Password invalida
+                <p class="form-error">Password invalida</p>
             @enderror
         </div>
         {{-- repeat new password --}}
@@ -24,7 +24,7 @@
             <label  class="form-label">Password: </label>
             <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
             @error('password_confirmation')
-                Password invalida
+                <p class="form-error">Password invalida</p>
             @enderror
         </div>
         <br><br>

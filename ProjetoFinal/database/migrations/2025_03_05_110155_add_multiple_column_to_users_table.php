@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('curso');
-            $table->dateTime('data_conclusao');
+            $table->date('data_conclusao');
             $table->boolean('horario');
             $table->boolean('tem_carro');
             $table->string('morada');

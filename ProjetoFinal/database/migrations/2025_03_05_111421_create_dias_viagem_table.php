@@ -13,8 +13,12 @@ return new class extends Migration
     {
         Schema::create('dias_viagem', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->integer('dia');
-            $table->primary(['user_id', 'dia']);
+            $table->boolean('segunda')->default(false);
+            $table->boolean('terca')->default(false);
+            $table->boolean('quarta')->default(false);
+            $table->boolean('quinta')->default(false);
+            $table->boolean('sexta')->default(false);
+            $table->primary('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

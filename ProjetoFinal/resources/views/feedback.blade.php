@@ -9,9 +9,18 @@
 </div>
 
 
-{{--
-@if(Auth::check()) --}}
+
+@if(Auth::check())
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+    </ol>
+</nav>
+
 <div class="d-flex justify-content-center align-items-center">
+
     <div class="col-md-6">
         <form action="{{ route('feedback.store') }}" method="POST" class="p-4 border rounded shadow bg-white">
             @csrf
@@ -43,11 +52,13 @@
     </form>
 </div>
 </div>
-{{-- @else
+@else
     <div class="alert alert-warning d-flex align-items-center" role="alert">
         <img src="{{ asset('img/warning.png') }}" alt="Warning" class="icon-login me-2">
         <span>Precisas de fazer <a href="{{ route('login') }}">login</a> para deixares um feedback.</span>
     </div>
-@endif --}}
+@endif
 
+<br>
+<br>
 @endsection

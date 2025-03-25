@@ -21,7 +21,6 @@
     <div class="main-content">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <div class="d-flex d-lg-none" style="width: 40px;"></div>
 
                 <a class="navbar-brand mx-auto" href="/">
                     <img src="{{ asset('img/cesae_boleias_full.png') }}" alt="CESAE Digital Logo">
@@ -43,12 +42,8 @@
                         </li>
 
 
-
                         @if (Route::has('login'))
                                 @auth
-
-
-
                                     @if (Auth::user()->is_admin == 1)
                                         <li class="nav-item">
                                             <a class="nav-link" href="/admin">Dashboard</a>
@@ -114,6 +109,7 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Links Úteis</h5>
+                    <br>
                     <ul class="list-unstyled">
                         <li><a href="https://www.cesaedigital.pt/" class="text-white">CESAE Digital</a></li>
                         <li><a href="/feedback" class="text-white">Feedback</a></li>
@@ -123,6 +119,7 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Contactos</h5>
+                    <br>
                     <p>Se tiveres dúvidas ou sugestões, entra em contacto connosco!</p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/CesaeDigital/"><i class="fab fa-facebook-f"></i></a>

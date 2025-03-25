@@ -6,6 +6,15 @@
     <h1 class="fonteBold mt-5 text-center">Dashboard Passageiro</h1>
 
     <div class="container mt-4">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin_dashboard') }}">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Dashboard Passageiro</li>
+            </ol>
+        </nav>
+
         @foreach ($drivers as $currentDriver)
             <div class="card mb-3 shadow-sm">
                 <div class="card-body d-flex align-items-center">
@@ -23,7 +32,7 @@
 
                     {{-- Feedback, conversar --}}
                     <div>
-                        <a class="btn btn-outline-primary me-2" href="#">Dar feedback</a>
+                        <a class="btn btn-outline-primary me-2" href="{{ route('feedback.store') }}">Dar feedback</a>
                         <a class="btn btn-outline-secondary" href="#">Conversar</a>
                     </div>
                 </div>
