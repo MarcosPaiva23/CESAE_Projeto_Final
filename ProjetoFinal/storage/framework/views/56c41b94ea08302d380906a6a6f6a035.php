@@ -7,16 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CESAE Boleias</title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/cesae_boleias_normal.png') }}">
+    
+    <link rel="stylesheet" href="<?php echo e(asset('bootstrap/css/bootstrap.min.css')); ?>">
+    <script src="<?php echo e(asset('bootstrap/js/bootstrap.bundle.min.js')); ?>" defer></script>
 
-    {{-- bottstrap --}}
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
-
-
-    {{-- css main --}}
-    <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
+    
+    <link rel="stylesheet" href="<?php echo e(asset('css/css2.css')); ?>">
 
 </head>
 
@@ -25,9 +21,10 @@
     <div class="main-content">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
+                <div class="d-flex d-lg-none" style="width: 40px;"></div>
 
                 <a class="navbar-brand mx-auto" href="/">
-                    <img src="{{ asset('img/cesae_boleias_full.png') }}" alt="CESAE Digital Logo">
+                    <img src="<?php echo e(asset('img/cesae_boleias_full.png')); ?>" alt="CESAE Digital Logo">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -39,66 +36,62 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link"href={{route('home')}}>Home</a>
+                            <a class="nav-link"href=<?php echo e(route('home')); ?>>Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"href={{route('about')}}>Sobre</a>
+                            <a class="nav-link"href=<?php echo e(route('about')); ?>>Sobre</a>
                         </li>
 
+                        
 
-                        @if (Route::has('login'))
-                                @auth
+                        <?php if(Route::has('login')): ?>
+                                <?php if(auth()->guard()->check()): ?>
 
+                                    
 
-                        @if (Route::has('login'))
-                                @auth
-
-
-
-
-                                    @if (Auth::user()->is_admin == 1)
+                                    <?php if(Auth::user()->is_admin == 1): ?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/admin">Dashboard</a>
                                         </li>
 
-                                        @else
+                                        <?php else: ?>
 
-                                        @if (Auth::user()->tem_carro == 1)
+                                        <?php if(Auth::user()->tem_carro == 1): ?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/dashboard-condutor">Matches</a>
                                         </li>
 
-                                        @else
+                                        <?php else: ?>
 
                                         <li class="nav-item">
                                             <a class="nav-link" href="/dashboard-passageiro">Matches</a>
                                         </li>
-                                        @endif
+                                        <?php endif; ?>
 
-                                    @endif
+                                    <?php endif; ?>
 
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Definições</a>
+                                        <a class="nav-link" href="#">Definições</a>
                                     </li>
 
 
-                                    <form name="logout" id="logout" action="{{ route('logout')}}" method="POST">
-                                        @csrf
+                                    <form name="logout" id="logout" action="<?php echo e(route('logout')); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
                                         <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
                                     </form>
 
-                                @else
+                                <?php else: ?>
                                     <li class="nav-item">
                                         <a class="nav-link" href="/login">Login</a>
                                     </li>
 
-                                    @if (Route::has('register'))
+                                    <?php if(Route::has('register')): ?>
                                         <li class="nav-item">
                                             <a class="nav-link" href="/register">Registar</a>
                                         </li>
-                                    @endif
-                                @endauth
-                        @endif
+                                    <?php endif; ?>
+                                <?php endif; ?>
+                        <?php endif; ?>
 
 
                     </ul>
@@ -107,14 +100,15 @@
         </nav>
 
 
-        {{-- container to insert the blades template --}}
+        
         <br>
         <div class="container body-div">
-            {{-- call for the content to show --}}
+            
 
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </div>
     </div>
+
 
     <footer>
 
@@ -122,12 +116,11 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="footer-logo">
-                        <img src="{{ asset('img/cesae_boleias_normal.png') }}" alt="CESAE Digital Logo">
+                        <img src="<?php echo e(asset('img/cesae_boleias_normal.png')); ?>" alt="CESAE Digital Logo">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <h5>Links Úteis</h5>
-                    <br>
                     <ul class="list-unstyled">
                         <li><a href="https://www.cesaedigital.pt/" class="text-white">CESAE Digital</a></li>
                         <li><a href="/feedback" class="text-white">Feedback</a></li>
@@ -137,7 +130,6 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Contactos</h5>
-                    <br>
                     <p>Se tiveres dúvidas ou sugestões, entra em contacto connosco!</p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/CesaeDigital/"><i class="fab fa-facebook-f"></i></a>
@@ -149,16 +141,12 @@
             <hr class="mt-4" style="background-color: white;">
             <div class="row">
                 <div class="col text-center">
-                    <p class="mb-0">&copy; {{ date('Y') }} CESAE Boleias. Todos os direitos reservados.</p>
+                    <p class="mb-0">&copy; <?php echo e(date('Y')); ?> CESAE Boleias. Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>
     </footer>
-    @auth
-    @include('settings_modal')
-@endauth
-
-<script src="{{ asset('js/settings.js') }}"></script>
 </body>
 
 </html>
+<?php /**PATH C:\Users\sw2024\Desktop\CESAE_Projeto_Final\ProjetoFinal\resources\views/layout/main_layout.blade.php ENDPATH**/ ?>

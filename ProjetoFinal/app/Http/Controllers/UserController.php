@@ -39,8 +39,8 @@ class UserController extends Controller
         $photo = null;
 
         //check if the request has a photo
-        if($request->hasFile('photo')){
-            $photo = Storage::putFile('user_images', $request->photo);
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo')->store('user_images', 'public');
         }
 
         
@@ -160,6 +160,7 @@ class UserController extends Controller
                 return view('auth.expired_verification', compact('id', 'hash'));
 
             } else {
+
                 return redirect()->route('home')->with('error', 'Ocurreu um erro na validação do email.');
             }
 
