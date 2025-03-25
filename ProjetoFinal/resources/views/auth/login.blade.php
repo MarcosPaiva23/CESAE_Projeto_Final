@@ -2,6 +2,7 @@
 
 @section('content')
 
+
     @error('error')
         <div class="alert alert-danger text-center">
             <h3>{{ $message }}</h3>
@@ -9,6 +10,17 @@
         <br>
     <br>
     @enderror
+
+
+
+    @error('error')
+        <div class="alert alert-danger text-center">
+            <h3>{{ $message }}</h3>
+        </div>
+        <br>
+    <br>
+    @enderror
+    
 
 
     <form method="POST" action="{{ route('login') }}">

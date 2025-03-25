@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 
@@ -16,19 +16,13 @@ use App\Http\Controllers\DashboardDriverController;
 
 
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\FeedbackController;
-
-use App\Http\Controllers\UserController;
-
-
-
 
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');//->middleware(['auth', 'admin']);
 
+Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.create');//->middleware(['auth', 'admin'])
 
+Route::post('/store-admin', [AdminController::class, 'store'])->name('admin.store');
 
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 
@@ -39,12 +33,16 @@ Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.st
 Route::get('about', [AboutController::class, 'index']) -> name('about');
 
 
+
 Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
 
 Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
 
 
 Route::get('/dashboard-passageiro', [DashboardController::class, 'showDriverTable'])->name('showDriverTable');
+
+Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
+
 
 Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
 

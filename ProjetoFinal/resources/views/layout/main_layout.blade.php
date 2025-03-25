@@ -9,7 +9,9 @@
 
     {{-- bottstrap --}}
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+
 
     {{-- css main --}}
     <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
@@ -44,6 +46,14 @@
 
                         @if (Route::has('login'))
                                 @auth
+
+
+                        @if (Route::has('login'))
+                                @auth
+
+
+
+
                                     @if (Auth::user()->is_admin == 1)
                                         <li class="nav-item">
                                             <a class="nav-link" href="/admin">Dashboard</a>

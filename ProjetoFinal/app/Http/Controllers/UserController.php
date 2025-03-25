@@ -132,7 +132,6 @@ class UserController extends Controller
                 return redirect()->route('login')->with('error', 'Ocurreu um erro na validação do email.');
             }
 
-
         }
 
 
