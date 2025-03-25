@@ -22,7 +22,6 @@
                     <img src="{{ $currentPassenger->foto }}" alt="Foto de {{ $currentPassenger->name }}"
                         class="img-fluid rounded-circle me-3" width="80" height="80">
 
-
                     {{-- Informações do passageiro --}}
                     <div class="flex-grow-1">
                         <h6 class="fonteBold mb-1">{{ $currentPassenger->name }}</h6>
@@ -34,7 +33,6 @@
                     <div>
                         <a class="btn btn-outline-primary me-2" href="{{ route('feedback.store') }}">Dar feedback</a>
                         <a class="btn btn-outline-secondary" href="#">Conversar</a>
-
                     </div>
                 </div>
             </div>

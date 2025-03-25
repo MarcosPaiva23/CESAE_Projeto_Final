@@ -1,7 +1,7 @@
 @extends('layout.main_layout')
 
 @section('content')
-    
+
     @if (@session('status'))
         <div class="alert alert-success text-center">
             <h3>Iremos enviar um email para recuperação da password</h3>
@@ -12,7 +12,7 @@
     <form method="POST" action="{{ route('password.email') }}">
         @csrf
 
-        
+
 
         {{-- email --}}
         <div class="mb-3">
@@ -23,9 +23,9 @@
             <p class="form-error">Email invalido</p>
         @enderror
         </div>
-        
+
         <br>
-        
+
         {{-- submit button --}}
         <button type="submit" class="btn btn-primary">Submeter</button>
     </form>

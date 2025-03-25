@@ -221,3 +221,144 @@ a:hover {
 .form-error{
     color: red;
 }
+
+
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+}
+
+h5 {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    text-align: justify;
+}
+
+h6 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #555;
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    margin: 0;
+}
+
+
+
+.icon-login {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+}
+
+
+.conteudo {
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    text-align: justify;
+
+}
+
+.barra {
+    background-color: #b6a7b6;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 100%;
+    margin: 5px auto;
+}
+
+.menu {
+    background-color: #b6a7b6;
+    text-align: center;
+    padding: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 100%;
+    margin: 5px auto;
+    height:40vh;
+    margin-bottom: 30px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #333;
+}
+
+.icon-arrow {
+    width: 40px;
+    height: 40px;
+}
+
+.icon-ride {
+    width: 70px;
+    height: 70px;
+}
+
+.center-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.d-flex{
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 50vh;
+    margin-top: 40px;
+
+}
+
+
+.icon-feedback {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.icon-text-container {
+    font-size:20px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 50px;
+}

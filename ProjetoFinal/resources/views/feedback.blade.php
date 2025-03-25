@@ -21,6 +21,9 @@
 
 <div class="d-flex justify-content-center align-items-center">
 
+{{--
+@if(Auth::check()) --}}
+<div class="d-flex justify-content-center align-items-center">
     <div class="col-md-6">
         <form action="{{ route('feedback.store') }}" method="POST" class="p-4 border rounded shadow bg-white">
             @csrf
@@ -53,6 +56,7 @@
 </div>
 </div>
 @else
+{{-- @else
     <div class="alert alert-warning d-flex align-items-center" role="alert">
         <img src="{{ asset('img/warning.png') }}" alt="Warning" class="icon-login me-2">
         <span>Precisas de fazer <a href="{{ route('login') }}">login</a> para deixares um feedback.</span>
@@ -61,4 +65,6 @@
 
 <br>
 <br>
+@endif --}}
+
 @endsection

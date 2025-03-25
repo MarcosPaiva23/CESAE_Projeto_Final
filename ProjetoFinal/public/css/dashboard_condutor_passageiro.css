@@ -12,7 +12,7 @@ h5 {
     align-items: center;
     border: none;
     margin-bottom: 20px;
-    background-color: rgba(150,129,187,0.9);
+    background-color: lightgrey;
   }
 
   /* Imagem do card */
@@ -36,14 +36,12 @@ h5 {
 
   /* Botões à direita */
   .text-end {
-    flex-direction: row;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    gap: 5px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   .btn {
-    margin-bottom: 5px;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
+    margin-bottom: 5px; /
   }

@@ -33,6 +33,7 @@
                     {{-- Feedback, conversar --}}
                     <div>
                         <a class="btn btn-outline-primary me-2" href="{{ route('feedback.store') }}">Dar feedback</a>
+                        <a class="btn btn-outline-primary me-2" href="#">Dar feedback</a>
                         <a class="btn btn-outline-secondary" href="#">Conversar</a>
                     </div>
                 </div>
