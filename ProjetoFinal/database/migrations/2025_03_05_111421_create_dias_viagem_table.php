@@ -18,6 +18,7 @@ return new class extends Migration
             $table->boolean('quarta')->default(false);
             $table->boolean('quinta')->default(false);
             $table->boolean('sexta')->default(false);
+            $table->timestamps();
             $table->primary('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

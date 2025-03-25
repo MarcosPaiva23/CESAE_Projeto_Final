@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\DiasViagem;
 use Illuminate\Database\Seeder;
+use Database\Seeders\UsersSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,11 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // creation of main admin
+        $this->call(UsersSeeder::class);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // creation of the simulated users
+        User::factory(100)->create();
+
+        // creation of the simulated days
+        DiasViagem::factory(102)->create();
+
     }
 }

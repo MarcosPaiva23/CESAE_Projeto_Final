@@ -6,10 +6,16 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Laravel\Fortify\Fortify;
 use Illuminate\Support\Facades\DB;
+
+use Illuminate\Foundation\Auth\User;
+
 use Illuminate\Support\Facades\Hash;
 use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Cache\RateLimiting\Limit;
+
+use App\Providers\FortifyServiceProvider;
+
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\RateLimiter;
@@ -89,7 +95,7 @@ class FortifyServiceProvider extends ServiceProvider
                         'error' => ['Por favor, verifique o seu email.'],
                     ]);
                 }
-                
+
                 // Return user model for successful login
                 return \App\Models\User::find($user->id);
             }
@@ -97,5 +103,4 @@ class FortifyServiceProvider extends ServiceProvider
 
     }
 
-    
 }
