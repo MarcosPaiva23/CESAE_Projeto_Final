@@ -8,7 +8,6 @@ use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
-    
 
     public function showPassengerTable(){
         $passengers = DB::table('users')->where('tem_carro', 0)->get();

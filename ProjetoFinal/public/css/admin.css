@@ -1,8 +1,31 @@
-.cesae-purple
-{
-background-color: #6a2c70;
-   color: white;
+.cesae-purple {
+    background-color: #6a2c70;
+    color: white;
 }
+
+.cesae-purple:hover {
+    background-color: #56235b;
+    color: white;
+  }
+
+.cesae-blue {
+    background-color: #00a8e8;
+    color: white
+}
+
+.cesae-blue:hover {
+    background-color: #0077b6;
+    color: white;
+  }
+
+  .cesae-gray {
+    background-color: #4a4e69; /* Dark slate gray that goes well with purple */
+    color: white;
+  }
+  .cesae-gray:hover {
+    background-color: #343a40; /* Darker shade for hover */
+    color: white;
+  }
 
 .table-image {
     max-width: 50px;
@@ -12,3 +35,7 @@ background-color: #6a2c70;
     object-fit: cover;
     border-radius: 4px;
 }
+
+.admin-container {
+    margin-bottom: 60px;
+  }

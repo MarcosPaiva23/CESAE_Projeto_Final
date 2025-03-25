@@ -19,9 +19,10 @@
     @enderror
     
 
+
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        
+
         {{-- error show if the credentials are not correct --}}
         @error('email')
             <div class="alert alert-danger" role="alert">
@@ -34,7 +35,7 @@
         <div class="mb-3">
             <label  class="form-label">Email: </label>
             <input type="email" class="form-control" id="email" name="email">
-            
+
         </div>
         {{-- password --}}
         <div class="mb-3">
