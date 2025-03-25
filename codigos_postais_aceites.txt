@@ -1,0 +1,23 @@
+4465-671
+4450-801
+4150-328
+4150-673
+4510-064
+4760-368
+4405-889
+4400-141
+4400-287
+4400-049
+4510-138
+4420-264
+4435-213
+4435-250
+
+
+ver se funcionam:
+site:
+https://nominatim.openstreetmap.org/ui/search.html?postalcode=4435-250
+
+json:
+https://nominatim.openstreetmap.org/search?country=portugal&postalcode=4435-250&format=json
+https://nominatim.openstreetmap.org/search?q=4405-889&format=json

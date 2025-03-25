@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -42,8 +43,39 @@ class UserController extends Controller
             $photo = Storage::putFile('user_images', $request->photo);
         }
 
-        //combinate the first 4 digits with the last 3 digits of the postcode to store in the database
-        $address = $request->Postcode_first4 . $request->Postcode_last3;
+        
+        //combinate the first 4 digits with the last 3 digits of the postcode to search on the api
+        $address = $request->Postcode_first4 . "-" . $request->Postcode_last3;
+
+ 
+        // create the request to the api
+        $response = Http::withHeaders([
+            'User-Agent' => 'CesaeBoleias/1.0 (suporte.cesae.boleias@gmail.com)', // Substitua por um identificador válido
+        ])->get('https://nominatim.openstreetmap.org/search', [
+            'q' => $address,
+            'format' => 'json',
+        ]);
+
+        // verify if the request was successful
+        if ($response->successful()) {
+            // decode the response to json
+            $data = $response->json();
+
+            // verify if the response has data
+            if (!empty($data)) {
+                // pick the first result
+                $firstResult = $data[0]; 
+
+                // change the post code to the coordinates (lon first because the api for the distance use it first)
+                $address = $firstResult['lon'] . "," . $firstResult['lat'];
+
+            } else {
+                echo "Nenhum resultado encontrado.";
+            }
+        } else {
+            // if the request fails return to the home page with an error message
+            return redirect()->route('home')->with('error','Ocurreu um erro ao tentar validar o código postal. Error: ' . $response->status());
+        }
 
 
         //create the data to store in the database
@@ -112,7 +144,7 @@ class UserController extends Controller
         //send the email verification
         $user->sendEmailVerificationNotification();
 
-        return redirect()->route('login')->with('message','Conta criada com sucesso. Verifique o seu e-mail para validar a conta.');
+        return redirect()->route('home')->with('message','Conta criada com sucesso. Verifique o seu e-mail para validar a conta.');
 
     }
 
@@ -128,8 +160,7 @@ class UserController extends Controller
                 return view('auth.expired_verification', compact('id', 'hash'));
 
             } else {
-
-                return redirect()->route('login')->with('error', 'Ocurreu um erro na validação do email.');
+                return redirect()->route('home')->with('error', 'Ocurreu um erro na validação do email.');
             }
 
         }

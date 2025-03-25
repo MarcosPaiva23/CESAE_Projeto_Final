@@ -2,16 +2,13 @@
 
 @section('content')
 
-
-    @error('error')
-        <div class="alert alert-danger text-center">
-            <h3>{{ $message }}</h3>
-        </div>
-        <br>
+    {{-- To show messages and erros coming from other pages o redirect to home --}}
+    @if (session('message'))
+    <div class="alert alert-success text-center">
+        <h3>{{session('message')}}</h3>
+    </div>
     <br>
-    @enderror
-
-
+    @endif
 
     @error('error')
         <div class="alert alert-danger text-center">
