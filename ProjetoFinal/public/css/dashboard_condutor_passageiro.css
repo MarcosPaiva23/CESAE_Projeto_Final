@@ -1,0 +1,47 @@
+body {
+    margin-top: 20px;
+  }
+
+h5 {
+    color: black;
+}
+
+  /* Estilo do card */
+  .card {
+    display: flex;
+    align-items: center;
+    border: none;
+    margin-bottom: 20px;
+    background-color: lightgrey;
+  }
+
+  /* Imagem do card */
+  .card-img-body {
+    flex: 1;
+    margin-right: 15px;
+  }
+
+  .card-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 0;
+    object-fit: cover;
+  }
+
+  /* Conteúdo do card */
+  .card-body {
+    flex: 2;
+    padding-left: 15px;
+  }
+
+  /* Botões à direita */
+  .text-end {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .btn {
+    margin-bottom: 5px; /
+  }

@@ -7,9 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CESAE Boleias</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('img/cesae_boleias_normal.png') }}">
+
     {{-- bottstrap --}}
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
+
 
     {{-- css main --}}
     <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
@@ -21,7 +25,6 @@
     <div class="main-content">
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
-                <div class="d-flex d-lg-none" style="width: 40px;"></div>
 
                 <a class="navbar-brand mx-auto" href="/">
                     <img src="{{ asset('img/cesae_boleias_full.png') }}" alt="CESAE Digital Logo">
@@ -42,6 +45,22 @@
                             <a class="nav-link"href={{ route('about') }}>Sobre</a>
                         </li>
 
+
+
+                        @if (Route::has('login'))
+                                @auth
+
+
+                        @if (Route::has('login'))
+                                @auth
+
+
+
+
+                                    @if (Auth::user()->is_admin == 1)
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="/admin">Dashboard</a>
+                                        </li>
 
 
                         @if (Route::has('login'))
@@ -66,6 +85,7 @@
                                             <a class="nav-link" href="#">Definições</a>
                                         </li>
                                     @endif
+
                                 @endif
 
                                 <form name="logout" id="logout" action="{{ route('logout') }}" method="POST">
@@ -79,6 +99,20 @@
                                 </li>
 
                                 @if (Route::has('register'))
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Definições</a>
+                                    </li>
+
+
+                                    <form name="logout" id="logout" action="{{ route('logout')}}" method="POST">
+                                        @csrf
+                                        <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
+                                    </form>
+
+                                @else
+
                                     <li class="nav-item">
                                         <a class="nav-link" href="/register">Registar</a>
                                     </li>
@@ -101,7 +135,6 @@
         </div>
     </div>
 
-
     <footer>
 
         <div class="container">
@@ -113,6 +146,7 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Links Úteis</h5>
+                    <br>
                     <ul class="list-unstyled">
                         <li><a href="https://www.cesaedigital.pt/" class="text-white">CESAE Digital</a></li>
                         <li><a href="/feedback" class="text-white">Feedback</a></li>
@@ -122,6 +156,7 @@
                 </div>
                 <div class="col-md-4">
                     <h5>Contactos</h5>
+                    <br>
                     <p>Se tiveres dúvidas ou sugestões, entra em contacto connosco!</p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/CesaeDigital/"><i class="fab fa-facebook-f"></i></a>
@@ -138,6 +173,11 @@
             </div>
         </div>
     </footer>
+    @auth
+    @include('settings_modal')
+@endauth
+
+<script src="{{ asset('js/settings.js') }}"></script>
 </body>
 
 </html>
