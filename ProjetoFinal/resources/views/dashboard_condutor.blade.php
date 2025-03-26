@@ -1,6 +1,38 @@
 @extends('layout.main_layout')
 @section('content')
 
+    <div class="row justify-content-center align-items-center">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Distância</th>
+                    <th scope="col">Utilidades</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($passengers as $currentPassenger)
+                    @auth
+                        @if (Auth::user()->horario == $currentPassenger->horario)
+                            <tr>
+                                <td>{{ $currentPassenger->foto }}</td>
+                                <td>{{ $currentPassenger->name }}</td>
+                                <td>{{ $currentPassenger->curso }}</td>
+                                <td>To be added</td>
+                                <td><a class="btn btn-info" href="">Dar feedback</a>
+                                    <a class="btn btn-info" href="">Conversar</a>
+                                <td>
+                            </tr>
+                        @endif
+                    @endauth
+                @endforeach
+            </tbody>
+        </table>
+        <br><br>
+
+
 <link rel="stylesheet" href="{{ asset('css/dashboard_condutor_passageiro.css') }}">
     <h1 class="fonteBold mt-5 text-center">Dashboard Condutor</h1>
 
@@ -41,6 +73,7 @@
 
     <!-- Botão para apagar conta -->
     <div class="text-center mt-4">
+
         <button type="button" class="btn btn-danger">Apagar conta</button>
     </div>
 

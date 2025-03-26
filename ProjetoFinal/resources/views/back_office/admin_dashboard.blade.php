@@ -38,7 +38,7 @@
                             <td>{{ $user->email }}</td>
                             <td>{{ $user->curso }}</td>
                             <td>{{ $user->tem_carro ? 'Sim' : 'Não' }}</td>
-                            <td><a class="btn btn-danger">Bloquear Acesso</a>
+                            <td><a class="btn btn-danger" href={{ route('blockUserAccess', $user->id) }}>Bloquear Acesso</a>
                             </td>
                         </tr>
                         @endforeach

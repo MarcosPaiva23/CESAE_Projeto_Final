@@ -13,11 +13,17 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-{
+    public function index(){
+
     $users = DB::table('users')->get();
     return view('back_office.admin_dashboard', compact('users'));
-}
+
+    }
+
+    public function blockUserAccess($id){
+        DB::table('users')->where('id', $id)->update(['is_blocked' => 1]);
+        return back();
+    }
 
     /**
      * Show the form for creating a new resource.
