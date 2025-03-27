@@ -15,6 +15,9 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDriverController;
 
+use App\Http\Controllers\SettingsController;
+
+
 Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/delete/{id}', [AdminController::class, 'blockUserAccess'])->name('blockUserAccess') -> middleware(Suspended::class);
 
@@ -22,18 +25,6 @@ Route::get('/', [HomeController::class, 'index']) -> name('home');
 
 Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback') -> middleware(['auth', Suspended::class]);
 Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store') -> middleware(['auth', Suspended::class]);
-
-
-
-use App\Http\Controllers\SettingsController;
-
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardDriverController;
-
-
-
-
-
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');//->middleware(['auth', 'admin']);
 
@@ -48,15 +39,11 @@ Route::post('/settings/update', [SettingsController::class, 'update'])->name('se
 Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback');
 Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 
-
 Route::get('about', [AboutController::class, 'index']) -> name('about');
-
 
 Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable') -> middleware(['auth', Suspended::class]);
 
 Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable') -> middleware(['auth', Suspended::class]);
-
-
 
 Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
 
@@ -67,10 +54,7 @@ Route::get('/dashboard-passageiro', [DashboardController::class, 'showDriverTabl
 
 Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
 
-
 Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
-
-
 
 //rotas para autenticação e registro
 Route::get('/register', [UserController::class, 'viewRegister'] )->name('register') -> middleware(Suspended::class);

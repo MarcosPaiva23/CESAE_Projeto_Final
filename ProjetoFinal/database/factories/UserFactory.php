@@ -54,7 +54,7 @@ class UserFactory extends Factory
 
         return [
             'name' => fake()->name(),
-            'email' => fake()->name() . "@msft.cesae.pt",
+            'email' => fake()->unique()->username(). '@msft.cesae.pt',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('pass'),
             'remember_token' => Str::random(10),

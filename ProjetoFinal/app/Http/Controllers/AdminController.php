@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index(){
 
-    $users = DB::table('users')->get();
+    $users = DB::table('users')->paginate(15);
     return view('back_office.admin_dashboard', compact('users'));
 
     }
