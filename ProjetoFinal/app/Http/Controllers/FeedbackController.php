@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        $feedbacks = DB::table('feedback')->get();
-        // $feedbacks = $this->getAllFeedbacks();
-        return view('feedback', compact ('feedbacks'));
+        // For admin backoffice - list all feedback
+        $feedbacks = Feedback::paginate(10);
+        return view('back_office.ver_feedback', compact('feedbacks'));
     }
 
     /**
@@ -23,7 +24,7 @@ class FeedbackController extends Controller
      */
     public function create()
     {
-        return view('feedback.create');
+        return view('feedback');
     }
 
     /**
@@ -36,13 +37,7 @@ class FeedbackController extends Controller
             'comment' => 'required|string|max:255',
         ]);
 
-    //    Feedback::create([
-    //     'user_id' => Auth::id(),
-    //     'user_email' => Auth::user()->email,
-    //     'comment' => $request -> comment,
-    //     'subject' => $request -> subject,
 
-    //    ]);
 
        DB::table('feedback')->insert([
         'user_id' => Auth::id(),
@@ -53,7 +48,7 @@ class FeedbackController extends Controller
         'updated_at' => now(),
     ]);
 
-        return redirect()->route('feedback')->with('success', 'Feedback enviado com sucesso!');
+    return redirect()->route('feedback')->with('success', 'Feedback enviado com sucesso!');
 
     }
 
@@ -63,12 +58,13 @@ class FeedbackController extends Controller
     public function show($id)
     {
         $feedback = DB::table('feedback')
-        ->join('users', 'users_id', '=', 'feedback.user_id')
+        ->join('users', 'users.id', '=', 'feedback.user_id')
         ->where('feedback.id', $id)
         ->select('feedback.*', 'users.email as user_email')
         ->first();
 
-        return view('feedback.show', compact('feedback'));
+        $feedback = Feedback::findOrFail($id);
+        return view('back_office.ver_feedback_especifico', compact('feedback'));
     }
 
     /**
@@ -92,10 +88,10 @@ class FeedbackController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('feedback')
-        ->where('id', $id)
-        ->delete();
 
-        return redirect()->route('feedback')->with('success', 'Feedback apagado com sucesso');
+        Feedback::destroy($id);
+        return redirect()->route('back_office.ver_feedback')
+             ->with('success', 'Feedback eliminado com sucesso');
     }
+
 }

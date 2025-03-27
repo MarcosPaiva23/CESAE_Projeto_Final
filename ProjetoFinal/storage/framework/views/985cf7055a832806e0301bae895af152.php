@@ -1,24 +1,23 @@
-@extends('layout.main_layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
-    {{-- To show messages and erros coming from other pages o redirect to home --}}
-    @if (session('error'))
+    
+    <?php if(session('error')): ?>
         <div class="alert alert-danger text-center">
-            <h3>{{session('error')}}</h3>
+            <h3><?php echo e(session('error')); ?></h3>
 
         </div>
         <br>
-    @endif
+    <?php endif; ?>
 
-    @if (session('message'))
+    <?php if(session('message')): ?>
         <div class="alert alert-success text-center">
 
-            <h3>{{ session('message') }}</h3>
+            <h3><?php echo e(session('message')); ?></h3>
 
         </div>
         <br>
-    @endif
+    <?php endif; ?>
 
 
     <div class="container mt-4">
@@ -28,7 +27,7 @@
 
                 <div class="conteudo">
 
-                    <h6><img src="{{ asset('img/ride-hailing.png') }}" alt="Ride" class="icon-ride">Bem-vindo ao CESAE
+                    <h6><img src="<?php echo e(asset('img/ride-hailing.png')); ?>" alt="Ride" class="icon-ride">Bem-vindo ao CESAE
                         Boleias!</h6>
                     <br>
 
@@ -53,8 +52,8 @@
                 </div>
             </div>
 
-            @if (Route::has('login'))
-                @auth
+            <?php if(Route::has('login')): ?>
+                <?php if(auth()->guard()->check()): ?>
 
                     <!-- Coluna Direita - Barra e Menu -->
                     <div class="col-md">
@@ -67,34 +66,34 @@
                                 <ul class="list-unstyled d-inline-block text-start">
                                     <p>
                                     <li>
-                                        <a href="{{ route('showDriverTable') }}">
-                                            <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                        <a href="<?php echo e(route('showDriverTable')); ?>">
+                                            <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                             Matches
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('showPassengerTable') }}">
-                                            <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                        <a href="<?php echo e(route('showPassengerTable')); ?>">
+                                            <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                             Dashboard Condutor
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('feedback') }}">
-                                            <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                        <a href="<?php echo e(route('feedback')); ?>">
+                                            <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                             Deixar feedback
                                         </a>
                                     </li>
                                     <li>
-                                         <a href="{{ route('settings.index') }}">
-                                        <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                         <a href="<?php echo e(route('settings.index')); ?>">
+                                        <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                         Definições
                                         </a>
                                     </li>
                                     <li>
-                                        <form method="POST" action="{{ route('logout') }}" style="display: inline;">
-                                            @csrf
+                                        <form method="POST" action="<?php echo e(route('logout')); ?>" style="display: inline;">
+                                            <?php echo csrf_field(); ?>
                                             <button type="submit" style="font-family: inherit; font-size: inherit; color: inherit; text-decoration: none; border: none; background: none; cursor: pointer; padding: 0; margin: 0; display: flex; align-items: center;">
-                                                <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                                <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                                 Logout
                                             </button>
                                         </form>
@@ -104,9 +103,11 @@
                         </div>
                     </div>
 
-                @endauth
-            @endif
+                <?php endif; ?>
+            <?php endif; ?>
 
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.main_layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\filip\OneDrive\Ambiente de Trabalho\Novo\CESAE_Projeto_Final\ProjetoFinal\resources\views/home.blade.php ENDPATH**/ ?>

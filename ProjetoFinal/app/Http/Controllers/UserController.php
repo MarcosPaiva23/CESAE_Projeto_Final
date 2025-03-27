@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -43,11 +45,11 @@ class UserController extends Controller
             $photo = $request->file('photo')->store('user_images', 'public');
         }
 
-        
+
         //combinate the first 4 digits with the last 3 digits of the postcode to search on the api
         $address = $request->Postcode_first4 . "-" . $request->Postcode_last3;
 
- 
+
         // create the request to the api
         $response = Http::withHeaders([
             'User-Agent' => 'CesaeBoleias/1.0 (suporte.cesae.boleias@gmail.com)', // Substitua por um identificador válido
@@ -64,7 +66,7 @@ class UserController extends Controller
             // verify if the response has data
             if (!empty($data)) {
                 // pick the first result
-                $firstResult = $data[0]; 
+                $firstResult = $data[0];
 
                 // change the post code to the coordinates (lon first because the api for the distance use it first)
                 $address = $firstResult['lon'] . "," . $firstResult['lat'];
@@ -205,9 +207,15 @@ class UserController extends Controller
             return back()->with('error','Ocurreu um erro ao tentar reenviar o email, porfavor contact o suport.');
         }
 
-
-
-
     }
 
+    // Logout -  Encerra a sessão do utilizador atual e redireciona para a página inicial.
+
+    public function logout() {
+
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('home');
+    }
 }

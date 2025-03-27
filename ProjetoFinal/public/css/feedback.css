@@ -1,0 +1,84 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+/* Container principal */
+.container {
+    margin-top: 5px;
+
+}
+
+/* Card principal */
+.card {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabeçalho do Card */
+.card-header {
+    background-color: #6a2c70;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Tabela */
+.table {
+    margin-top: 15px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table th {
+    background-color: #6a2c70;
+    color: white;
+    text-align: center;
+    padding: 12px;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+/* Botões de ação */
+.btn-info {
+    background-color: #00a8e8;
+    border-color: #00a8e8;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Botões pequenos */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 14px;
+}
+
+/* Alerta de sucesso e erro */
+.alert {
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Paginação */
+.pagination {
+    justify-content: center;
+}
+
+.pagination .page-link {
+    color: #007bff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    border-color: #007bff;
+}
