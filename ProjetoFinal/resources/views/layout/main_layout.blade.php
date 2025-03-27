@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
 
-
     {{-- css main --}}
     <link rel="stylesheet" href="{{ asset('css/css2.css') }}">
 
@@ -39,33 +38,14 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link"href={{ route('home') }}>Home</a>
+                            <a class="nav-link" href="{{ route('home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"href={{ route('about') }}>Sobre</a>
+                            <a class="nav-link" href="{{ route('about') }}">Sobre</a>
                         </li>
-
-
-
-                        @if (Route::has('login'))
-                                @auth
-
-
-                        @if (Route::has('login'))
-                                @auth
-
-
-
-
-                                    @if (Auth::user()->is_admin == 1)
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="/admin">Dashboard</a>
-                                        </li>
-
 
                         @if (Route::has('login'))
                             @auth
-
                                 @if (Auth::user()->is_admin == 1)
                                     <li class="nav-item">
                                         <a class="nav-link" href="/admin">Dashboard</a>
@@ -82,10 +62,9 @@
                                             </li>
                                         @endif
                                         <li class="nav-item">
-                                            <a class="nav-link" href="#">Definições</a>
+                                            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Definições</a>
                                         </li>
                                     @endif
-
                                 @endif
 
                                 <form name="logout" id="logout" action="{{ route('logout') }}" method="POST">
@@ -99,44 +78,26 @@
                                 </li>
 
                                 @if (Route::has('register'))
-
-
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">Definições</a>
-                                    </li>
-
-
-                                    <form name="logout" id="logout" action="{{ route('logout')}}" method="POST">
-                                        @csrf
-                                        <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout').submit();">Logout</a>
-                                    </form>
-
-                                @else
-
                                     <li class="nav-item">
                                         <a class="nav-link" href="/register">Registar</a>
                                     </li>
                                 @endif
                             @endauth
                         @endif
-
                     </ul>
                 </div>
             </div>
         </nav>
 
-
         {{-- container to insert the blades template --}}
         <br>
         <div class="container body-div">
             {{-- call for the content to show --}}
-
             @yield('content')
         </div>
     </div>
 
     <footer>
-
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -173,11 +134,11 @@
             </div>
         </div>
     </footer>
+
     @auth
-    @include('settings_modal')
-@endauth
+        @include('settings_modal')
+    @endauth
 
-<script src="{{ asset('js/settings.js') }}"></script>
+    <script src="{{ asset('js/settings.js') }}"></script>
 </body>
-
 </html>
