@@ -18,6 +18,7 @@
         <div class="card mb-3">
             <div class="card-body d-flex align-items-center">
                 {{-- Foto passageiro --}}
+
                 @if ($currentDriver->foto != null)
                     <img src="{{ asset('storage/' . $currentDriver->foto) }}" alt="Foto de {{ $currentDriver->name }}"
                     class="img-fluid rounded-circle me-3" width="80" height="80">
@@ -25,6 +26,7 @@
                     <img src="{{ asset('img/no-photo.jpg') }}" alt="Sem foto"
                     class="img-fluid rounded-circle me-3" width="80" height="80">
                 @endif
+
 
                 {{-- Informações do passageiro --}}
                 <div class="flex-grow-1">
@@ -42,5 +44,6 @@
         </div>
     @endforeach
 </div>
+
 
 @endsection

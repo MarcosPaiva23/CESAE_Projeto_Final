@@ -1,7 +1,6 @@
 @extends('layout.main_layout')
 
 @section('content')
-
     <link rel="stylesheet" href="{{ asset('css/login&register.css') }}">
 
     <div class="container mt-4 admin-form-container">
@@ -22,100 +21,24 @@
                             @csrf
 
                             <div class="row">
-                                <!-- coluna da esquerda -->
+                                <!-- Coluna da esquerda -->
                                 <div class="col-md-6">
-                                    {{-- nome --}}
                                     <div class="mb-3">
                                         <label class="form-label">Nome: </label>
-                                        <input type="text" class="form-control" id="name" name="name"
-                                            value="{{ old('name') }}">
+                                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                                         @error('name')
                                             <p class="text-danger">Nome inválido</p>
                                         @enderror
                                     </div>
 
-                                    {{-- email --}}
                                     <div class="mb-3">
                                         <label class="form-label">Email: </label>
-                                        <input type="email" class="form-control" id="email" name="email"
-                                            placeholder="Email de aluno do CESAE" value="{{ old('email') }}">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email de aluno do CESAE" value="{{ old('email') }}">
                                         @error('email')
                                             <p class="text-danger">Email inválido</p>
                                         @enderror
                                     </div>
-    <form method="POST" action="{{ route('users.create') }}" enctype="multipart/form-data">
-        @csrf
-        {{-- name --}}
-        <div class="mb-3">
-            <label class="form-label">Nome: </label>
-            <input type="text" class="form-control" id="name" name="name">
-            @error('name')
-                <p class="form-error">Nome invalido</p>
-            @enderror
-        </div>
-        {{-- email --}}
-        <div class="mb-3">
-            <label  class="form-label">Email: </label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email de aluno do cesae">
-            @error('email')
-                <p class="form-error">Email invalido</p>
-            @enderror
-        </div>
-        {{-- password --}}
-        <div class="mb-3">
-            <label  class="form-label">Password: </label>
-            <input type="password" class="form-control" id="password" name="password">
-            @error('password')
-                <p class="form-error">Password invalida</p>
-            @enderror
-        </div>
-        {{-- course --}}
-        <div class="mb-3">
-            <label  class="form-label">Curso que frequenta: </label>
-            <input type="text" class="form-control" id="course" name="course">
-            @error('course')
-                <p class="form-error">Curso invalido</p>
-            @enderror
-        </div>
-        {{-- data de cconclusao do curso --}}
-        <div class="mb-3">
-            <label  class="form-label">Data de conclusão do curso: </label>
-            <input type="date" class="form-control" id="completion_date" name="completion_date">
-            @error('completion_date')
-                <p class="form-error">Data invalida</p>
-            @enderror
-        </div>
-        {{-- horario --}}
-        <div class="mb-3">
-            <label  class="form-label">Horário: </label>
-            <select class="form-control" name="Schedule" id="Schedule">
-                <option value="0">Laboral</option>
-                <option value="1">Pós-Laboral</option>
-            </select>
-            @error('Schedule')
-                <p class="form-error">Escolha invalida</p>
-            @enderror
-        </div>
-        {{-- se tem carro --}}
-        <div class="mb-3">
-            <label  class="form-label">Boleia: </label>
-            <select class="form-control" name="have_car" id="have_car">
-                <option value="0">Quero boleia</option>
-                <option value="1">Quero dar boleia</option>
-            </select>
-            @error('have_car')
-                <p class="form-error">Escolha invalida<p
-            @enderror
-        </div>
-        {{-- Codigo Postal --}}
-        <div class="mb-3">
-            <label  class="form-label">Codigo postal: </label>
-            <div class="row">
-                <div class="col-2 text-center">
-                    <input type="text" class="form-control" id="Postcode_first4" name="Postcode_first4" maxlength="4">
-                </div>
 
-                                    {{-- password --}}
                                     <div class="mb-3">
                                         <label class="form-label">Password: </label>
                                         <input type="password" class="form-control" id="password" name="password">
@@ -124,203 +47,105 @@
                                         @enderror
                                     </div>
 
-                                    {{-- curso --}}
                                     <div class="mb-3">
                                         <label class="form-label">Curso que frequentas: </label>
-                                        <input type="text" class="form-control" id="course" name="course"
-                                            value="{{ old('course') }}">
+                                        <input type="text" class="form-control" id="course" name="course" value="{{ old('course') }}">
                                         @error('course')
                                             <p class="text-danger">Curso inválido</p>
-                                        @enderror
-                                    </div>
-
-                                    {{-- data de conclusao do curso --}}
-                                    <div class="mb-3">
-                                        <label class="form-label">Data de conclusão do curso: </label>
-                                        <input type="date" class="form-control" id="completion_date"
-                                            name="completion_date" value="{{ old('completion_date') }}">
-                                        @error('completion_date')
-                                            <p class="text-danger">Data inválida</p>
                                         @enderror
                                     </div>
                                 </div>
 
                                 <!-- Coluna da direita -->
                                 <div class="col-md-6">
-                                    {{-- horario --}}
+                                    <div class="mb-3">
+                                        <label class="form-label">Data de conclusão do curso: </label>
+                                        <input type="date" class="form-control" id="completion_date" name="completion_date" value="{{ old('completion_date') }}">
+                                        @error('completion_date')
+                                            <p class="text-danger">Data inválida</p>
+                                        @enderror
+                                    </div>
+
                                     <div class="mb-3">
                                         <label class="form-label">Horário: </label>
                                         <select class="form-select" name="Schedule" id="Schedule">
-                                            <option value="0" {{ old('Schedule') == '0' ? 'selected' : '' }}>Laboral
-                                            </option>
-                                            <option value="1" {{ old('Schedule') == '1' ? 'selected' : '' }}>
-                                                Pós-Laboral</option>
+                                            <option value="0" {{ old('Schedule') == '0' ? 'selected' : '' }}>Laboral</option>
+                                            <option value="1" {{ old('Schedule') == '1' ? 'selected' : '' }}>Pós-Laboral</option>
                                         </select>
                                         @error('Schedule')
                                             <p class="text-danger">Escolha inválida</p>
                                         @enderror
                                     </div>
 
-                                    {{-- se tem carro --}}
                                     <div class="mb-3">
                                         <label class="form-label">Boleia: </label>
                                         <select class="form-select" name="have_car" id="have_car">
-                                            <option value="0" {{ old('have_car') == '0' ? 'selected' : '' }}>Quero
-                                                boleia</option>
-                                            <option value="1" {{ old('have_car') == '1' ? 'selected' : '' }}>Quero dar
-                                                boleia</option>
+                                            <option value="0" {{ old('have_car') == '0' ? 'selected' : '' }}>Quero boleia</option>
+                                            <option value="1" {{ old('have_car') == '1' ? 'selected' : '' }}>Quero dar boleia</option>
                                         </select>
                                         @error('have_car')
                                             <p class="text-danger">Escolha inválida</p>
                                         @enderror
                                     </div>
-
-                                    {{-- Codigo Postal --}}
-                                    <div class="mb-3">
-                                        <label class="form-label">Código postal: </label>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <input type="text" class="form-control" id="Postcode_first4"
-                                                    name="Postcode_first4" maxlength="4"
-                                                    value="{{ old('Postcode_first4') }}" placeholder="0000">
-                                            </div>
-                                            <div class="col-1 text-center pt-2">-</div>
-                                            <div class="col-5">
-                                                <input type="text" class="form-control" id="Postcode_last3"
-                                                    name="Postcode_last3" maxlength="3"
-                                                    value="{{ old('Postcode_last3') }}" placeholder="000">
-                                            </div>
-                                        </div>
-                                        @error('Postcode_first4')
-                                            <p class="text-danger">Primeiros 4 dígitos inválidos</p>
-                                        @enderror
-                                        @error('Postcode_last3')
-                                            <p class="text-danger">Últimos 3 dígitos inválidos</p>
-                                        @enderror
-                                    </div>
-
-                                    {{-- foto --}}
-                                    <div class="mb-3">
-                                        <label class="form-label">Foto de perfil: </label>
-                                        <input type="file" class="form-control" id="photo" name="photo"
-                                            accept="image/*">
-                                        @error('photo')
-                                            <p class="text-danger">Foto inválida</p>
-                                        @enderror
-                                    </div>
                                 </div>
                             </div>
 
-                            {{-- checkbox dos dias --}}
+                            <div class="mb-3">
+                                <label class="form-label">Código postal: </label>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" id="Postcode_first4" name="Postcode_first4" maxlength="4" value="{{ old('Postcode_first4') }}" placeholder="0000">
+                                    </div>
+                                    <div class="col-1 text-center pt-2">-</div>
+                                    <div class="col-5">
+                                        <input type="text" class="form-control" id="Postcode_last3" name="Postcode_last3" maxlength="3" value="{{ old('Postcode_last3') }}" placeholder="000">
+                                    </div>
+                                </div>
+                                @error('Postcode_first4')
+                                    <p class="text-danger">Primeiros 4 dígitos inválidos</p>
+                                @enderror
+                                @error('Postcode_last3')
+                                    <p class="text-danger">Últimos 3 dígitos inválidos</p>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Foto de perfil: </label>
+                                <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                                @error('photo')
+                                    <p class="text-danger">Foto inválida</p>
+                                @enderror
+                            </div>
+
                             <div class="mb-3">
                                 <label class="form-label">Dias em que planeias usar o serviço: </label>
                                 <div class="row row-cols-5 g-2">
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="monday"
-                                                name="monday" {{ old('monday') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="monday">Segunda</label>
+                                    @foreach(['monday' => 'Segunda', 'tuesday' => 'Terça', 'wednesday' => 'Quarta', 'thursday' => 'Quinta', 'friday' => 'Sexta'] as $day => $label)
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="{{ $day }}" name="{{ $day }}" {{ old($day) ? 'checked' : '' }}>
+                                                <label class="form-check-label" for="{{ $day }}">{{ $label }}</label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="tuesday"
-                                                name="tuesday" {{ old('tuesday') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="tuesday">Terça</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="wednesday"
-                                                name="wednesday" {{ old('wednesday') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="wednesday">Quarta</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="thursday"
-                                                name="thursday" {{ old('thursday') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="thursday">Quinta</label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="friday"
-                                                name="friday" {{ old('friday') ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="friday">Sexta</label>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
 
-                            {{-- checkbox dos termos e condições --}}
                             <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="cb_accept" name="cb_accept"
-                                    {{ old('cb_accept') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="cb_accept">Aceito os termos e condições de
-                                    uso.</label>
+                                <input type="checkbox" class="form-check-input" id="cb_accept" name="cb_accept" {{ old('cb_accept') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="cb_accept">Aceito os termos e condições de uso.</label>
                                 @error('cb_accept')
                                     <p class="text-danger">É necessário aceitar os termos</p>
                                 @enderror
                             </div>
 
-                            {{-- submit --}}
                             <div class="d-grid gap-2">
                                 <button type="submit" class="btn cesae-blue">Criar Conta</button>
-                            </div>
-
-                            <div class="mt-3 text-center">
-                                <p>Já tens uma conta? <a href="{{ route('login') }}">Login</a></p>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-
-            @error('Postcode_first4')
-                <p class="form-error">Primeiros 4 digitos invalidos</p>
-            @enderror
-            @error('Postcode_last3')
-                <p class="form-error">Ultimos 3 digitos invalidos</p>
-            @enderror
-        </div>
-        {{-- checkbox for the days --}}
-        <div class="mb-3">
-            <label  class="form-label">Dias com disponivilidade ou que quer boleia: </label>
-            <div class="row text-center">
-                <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="monday" name="monday"> Segunda</label>
-                </div>
-                <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="tuesday" name="tuesday"> Terça</label>
-                </div>
-                <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="wednesday" name="wednesday"> Quarta</label>
-                </div>
-                <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="thursday" name="thursday"> Quinta</label>
-                </div>
-                <div class="col">
-                    <label class="form-check-label" for="exampleCheck1"> <input type="checkbox" class="form-check-input" id="friday" name="friday"> Sexta</label>
-                </div>
-            </div>
-        </div>
-        {{-- user image --}}
-        <div class="mb-3">
-            <label  class="form-label">Foto de perfil: </label>
-            <input type="file" class="form-control" id="photo" name="photo" accept="/image">
-            @error('photo')
-                <p class="form-error">Foto invalida<p
-            @enderror
-        </div>
-        {{-- checkbox for condition accept --}}
-        <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="cb_accept" name="cb_accept">
-            <label class="form-check-label" for="exampleCheck1">Termos e condições de uso.</label>
-            @error('cb_accept')
-                <br><p class="form-error">É necessario aceitar os termos</p>
-            @enderror
         </div>
     </div>
-    <br>
 @endsection

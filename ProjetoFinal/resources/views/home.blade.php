@@ -1,9 +1,14 @@
 @extends('layout.main_layout')
 @section('content')
 
+
+
+    {{-- To show messages and erros coming from other pages o redirect to home --}}
     @if (session('error'))
         <div class="alert alert-danger text-center">
-            <h3>{{ session('error') }}</h3>
+            <h3>{{session('error')}}</h3>
+
+
         </div>
         <br>
     @endif
@@ -11,6 +16,7 @@
     @if (session('message'))
         <div class="alert alert-success text-center">
             <h3>{{ session('message') }}</h3>
+
         </div>
         <br>
     @endif
@@ -38,7 +44,10 @@
                         <li><strong>Gestão Personalizada:</strong> Organize as suas boleias e comunique com outros
                             participantes.</li>
                         <p>
-                        <li><strong>Feedback:</strong> Avalie e garanta segurança e confiança.</li>
+
+                            <li><strong>Feedback:</strong> Avalie e garanta segurança e confiança.</li>
+
+
                     </ul>
                 </div>
             </div>
@@ -53,6 +62,8 @@
                         <div class="menu mt-2 justify-content-center align-items-center">
                             <div class="container text-center">
                                 <ul class="list-unstyled d-inline-block text-start">
+
+
                                     @if(Auth::user()->is_admin == 1)
                                         {{-- Menu de Admin --}}
                                         <li>
@@ -101,6 +112,7 @@
                                         </a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
+
                                         </form>
                                     </li>
                                 </ul>

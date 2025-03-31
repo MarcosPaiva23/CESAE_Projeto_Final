@@ -12,8 +12,26 @@ class SettingsController extends Controller
      */
     public function index()
     {
-        //
+        $userId = auth()->id();
+
+        $userDays = DB::table('dias_viagem')
+            ->where('user_id', $userId)
+            ->first();
+
+        $daysArray = [];
+        if ($userDays) {
+            foreach (['segunda', 'terca', 'quarta', 'quinta', 'sexta'] as $day) {
+                if ($userDays->$day) {
+                    $daysArray[] = array_search($day, ['segunda', 'terca', 'quarta', 'quinta', 'sexta']) + 1;
+                }
+            }
+        }
+
+        return view('home', [
+            'userDays' => $daysArray
+        ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
