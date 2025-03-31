@@ -63,7 +63,7 @@ class UserFactory extends Factory
             'horario' => rand(0,1),
             'tem_carro' => rand(0,1),
             'morada' => $this->faker->randomElement($cords),
-            'foto' => "teste.jpg",
+            'foto' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ];
