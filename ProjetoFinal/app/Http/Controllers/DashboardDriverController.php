@@ -42,6 +42,8 @@ class DashboardDriverController extends Controller
                         'end' => $user->morada,
                     ]);
 
+                    sleep(1);
+
                 // verify if the request was successful
                 if ($response->successful()) {
                     // decode the response to json
