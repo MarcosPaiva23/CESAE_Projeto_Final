@@ -17,7 +17,7 @@ return new class extends Migration
             $table->boolean('horario');
             $table->boolean('tem_carro');
             $table->string('morada');
-            $table->string('foto');
+            $table->string('foto')->nullable;
         });
     }
 

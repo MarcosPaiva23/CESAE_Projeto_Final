@@ -54,7 +54,7 @@ class UserFactory extends Factory
 
         return [
             'name' => fake()->name(),
-            'email' => fake()->name() . "@msft.cesae.pt",
+            'email' => fake()->unique()->username(). '@msft.cesae.pt',
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('pass'),
             'remember_token' => Str::random(10),
@@ -63,7 +63,7 @@ class UserFactory extends Factory
             'horario' => rand(0,1),
             'tem_carro' => rand(0,1),
             'morada' => $this->faker->randomElement($cords),
-            'foto' => "teste.jpg",
+            'foto' => null,
             'created_at' => now(),
             'updated_at' => now(),
         ];

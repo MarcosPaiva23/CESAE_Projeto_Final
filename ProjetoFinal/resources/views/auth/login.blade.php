@@ -3,7 +3,6 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/login&register.css') }}">
 
-
 <div class="container mt-4 mb-4">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -64,6 +63,7 @@
                 </div>
             </div>
 
+
     {{-- To show messages and erros coming from other pages o redirect to home --}}
     @if (session('message'))
     <div class="alert alert-success text-center">
@@ -80,6 +80,8 @@
     <br>
     @enderror
 
-    </div>
+
+
+
 </div>
 @endsection

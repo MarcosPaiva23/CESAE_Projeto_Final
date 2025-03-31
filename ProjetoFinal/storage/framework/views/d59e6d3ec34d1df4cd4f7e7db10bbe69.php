@@ -9,7 +9,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo e(route('home')); ?>">Home</a></li>
             <li class="breadcrumb-item"><a href="<?php echo e(route('admin_dashboard')); ?>">Dashboard</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Dashboard Passageiro</li>
+            <li class="breadcrumb-item active" aria-current="page">Dashboard Condutor</li>
         </ol>
     </nav>
 
@@ -17,14 +17,19 @@
         <div class="card mb-3">
             <div class="card-body d-flex align-items-center">
                 
-                <img src="<?php echo e($currentPassenger->foto); ?>" alt="Foto de <?php echo e($currentPassenger->name); ?>"
+                <?php if($currentPassenger->foto != null): ?>
+                    <img src="<?php echo e(asset('storage/' . $currentPassenger->foto)); ?>" alt="Foto de <?php echo e($currentPassenger->name); ?>"
                     class="img-fluid rounded-circle me-3" width="80" height="80">
+                <?php else: ?>
+                    <img src="<?php echo e(asset('img/no-photo.jpg')); ?>" alt="Sem foto"
+                    class="img-fluid rounded-circle me-3" width="80" height="80">
+                <?php endif; ?>
 
                 
                 <div class="flex-grow-1">
                     <h6 class="fonteBold mb-1"><?php echo e($currentPassenger->name); ?></h6>
                     <p class="mb-1 text-muted"><?php echo e($currentPassenger->curso); ?></p>
-                    <p class="small text-muted">Distância: To be added</p>
+                    <p class="small text-muted">Distância: <?php echo e($currentPassenger->distance); ?></p>
                 </div>
 
                 
@@ -39,4 +44,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layout.main_layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\sw2024\Desktop\CESAE_Projeto_Final\ProjetoFinal\resources\views/dashboard_condutor.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layout.main_layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\sw2024\Desktop\git\CESAE_Projeto_Final\ProjetoFinal\resources\views/dashboard_condutor.blade.php ENDPATH**/ ?>
