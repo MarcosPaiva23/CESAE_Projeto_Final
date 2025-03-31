@@ -17,6 +17,7 @@
         <div class="card mb-3">
             <div class="card-body d-flex align-items-center">
                 
+
                 <?php if($currentDriver->foto != null): ?>
                     <img src="<?php echo e(asset('storage/' . $currentDriver->foto)); ?>" alt="Foto de <?php echo e($currentDriver->name); ?>"
                     class="img-fluid rounded-circle me-3" width="80" height="80">
@@ -24,6 +25,7 @@
                     <img src="<?php echo e(asset('img/no-photo.jpg')); ?>" alt="Sem foto"
                     class="img-fluid rounded-circle me-3" width="80" height="80">
                 <?php endif; ?>
+
 
                 
                 <div class="flex-grow-1">
@@ -41,6 +43,7 @@
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 </div>
+
 
 <?php $__env->stopSection(); ?>
 

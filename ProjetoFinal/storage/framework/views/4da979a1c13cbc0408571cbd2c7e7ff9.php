@@ -44,6 +44,7 @@
                             <a class="nav-link" href="<?php echo e(route('about')); ?>">Sobre</a>
                         </li>
 
+
                         <?php if(Route::has('login')): ?>
                             <?php if(auth()->guard()->check()): ?>
                                 <?php if(Auth::user()->is_admin == 1): ?>
