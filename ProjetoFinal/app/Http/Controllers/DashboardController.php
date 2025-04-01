@@ -40,7 +40,7 @@ class DashboardController extends Controller
                         'end' => $user->morada,
                     ]);
 
-                    sleep(1);
+                    //sleep(1);
 
                 // verify if the request was successful
                 if ($response->successful()) {
@@ -65,7 +65,7 @@ class DashboardController extends Controller
                         }
 
                     } else {
-                        echo "Nenhum resultado encontrado.";
+                        dd("Nenhum resultado encontrado.");
                     }
                 } else {
                     // if the request fails return to the home page with an error message

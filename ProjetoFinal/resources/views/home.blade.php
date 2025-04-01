@@ -78,14 +78,14 @@
                                             <li>
                                                 <a href="{{ route('showPassengerTable') }}">
                                                     <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
-                                                    Meus Matches (Condutor)
+                                                    Meus Matches (Passageiro)
                                                 </a>
                                             </li>
                                         @else
                                             <li>
                                                 <a href="{{ route('showDriverTable') }}">
                                                     <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
-                                                    Meus Matches (Passageiro)
+                                                    Meus Matches (Condutor)
                                                 </a>
                                             </li>
                                         @endif
