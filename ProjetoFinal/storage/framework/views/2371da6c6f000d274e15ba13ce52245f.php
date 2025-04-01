@@ -77,14 +77,14 @@
                                             <li>
                                                 <a href="<?php echo e(route('showPassengerTable')); ?>">
                                                     <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
-                                                    Meus Matches (Condutor)
+                                                    Meus Matches (Passageiro)
                                                 </a>
                                             </li>
                                         <?php else: ?>
                                             <li>
                                                 <a href="<?php echo e(route('showDriverTable')); ?>">
                                                     <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
-                                                    Meus Matches (Passageiro)
+                                                    Meus Matches (Condutor)
                                                 </a>
                                             </li>
                                         <?php endif; ?>
