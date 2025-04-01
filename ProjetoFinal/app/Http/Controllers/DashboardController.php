@@ -13,13 +13,15 @@ class DashboardController extends Controller
 
     public function showPassengerTable(){
 
-        $allDrivers = DB::table('users')->where('tem_carro', 1)->get();
+        $drivers = DB::table('users')->where('tem_carro', 1)->get();
 
         $user = Auth::user();
 
-        $drivers = $this->calcKms($allDrivers, $user);
+        $address = $user->morada;
 
-        return view('dashboard_passageiro', compact('drivers'));
+        // $drivers = $this->calcKms($allDrivers, $user);
+
+        return view('dashboard_passageiro', compact('drivers', 'address'));
     }
 
     public function calcKms($allDrivers, $user){

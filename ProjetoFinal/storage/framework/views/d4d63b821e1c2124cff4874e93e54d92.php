@@ -13,7 +13,15 @@
         </ol>
     </nav>
 
+
+    <!-- Div do Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+
     <?php $__currentLoopData = $drivers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $currentDriver): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
         <div class="card mb-3">
             <div class="card-body d-flex align-items-center">
                 
@@ -31,7 +39,7 @@
                 <div class="flex-grow-1">
                     <h6 class="fonteBold mb-1"><?php echo e($currentDriver->name); ?></h6>
                     <p class="mb-1 text-muted"><?php echo e($currentDriver->curso); ?></p>
-                    <p class="small text-muted">Distância: <?php echo e($currentDriver->distance); ?></p>
+                    
                 </div>
 
                 
@@ -42,7 +50,20 @@
             </div>
         </div>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+
 </div>
+
+<script>
+    window.drivers = <?php echo json_encode($drivers, 15, 512) ?>;
+
+    window.address = <?php echo json_encode($address, 15, 512) ?>;
+</script>
+
+<script src="<?php echo e(asset("js/passengerView.js")); ?>"></script>
+
+
+<link rel="stylesheet" href="<?php echo e(asset('css/loading_animation.css')); ?>">
 
 
 <?php $__env->stopSection(); ?>

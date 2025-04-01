@@ -14,7 +14,15 @@
         </ol>
     </nav>
 
+
+    <!-- Div do Preloader -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+
     @foreach ($drivers as $currentDriver)
+
         <div class="card mb-3">
             <div class="card-body d-flex align-items-center">
                 {{-- Foto passageiro --}}
@@ -32,7 +40,7 @@
                 <div class="flex-grow-1">
                     <h6 class="fonteBold mb-1">{{ $currentDriver->name }}</h6>
                     <p class="mb-1 text-muted">{{ $currentDriver->curso }}</p>
-                    <p class="small text-muted">Distância: {{ $currentDriver->distance }}</p>
+                    {{-- <p class="small text-muted">Distância: {{ $currentDriver->distance }}</p> --}}
                 </div>
 
                 {{-- Feedback, conversar --}}
@@ -43,7 +51,20 @@
             </div>
         </div>
     @endforeach
+
+
 </div>
+
+<script>
+    window.drivers = @json($drivers);
+
+    window.address = @json($address);
+</script>
+
+<script src="{{ asset("js/passengerView.js") }}"></script>
+
+{{-- css animation --}}
+<link rel="stylesheet" href="{{ asset('css/loading_animation.css') }}">
 
 
 @endsection
