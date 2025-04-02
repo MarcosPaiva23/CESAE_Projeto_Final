@@ -18,7 +18,7 @@ async function getDistance(start, end) {
         const response = await fetch(`${url}?${params.toString()}`, {
             method: "GET",
             headers: {
-                "User-Agent": "CesaeBoleias/1.1 (suporte.cesae.boleias@gmail.com)"
+                "User-Agent": "CesaeBoleias/1.2 (suporte.cesae.boleias@gmail.com)"
             }
         });
 
@@ -42,13 +42,13 @@ async function getDistance(start, end) {
     }
 }
 
-function drawCards(driversArray){
-    let mainDiv = document.getElementById("userscards");
+function drawCards(passengerArray){
+    let mainDiv = document.getElementById("passengersDiv");
 
-    //create the cards for the drivers
-    driversArray.forEach(driver => {
+    //create the cards for the passanger
+    passengerArray.forEach(passanger => {
 
-        if(driver.distance <= 5000){
+        if(passanger.distance <= 5000){
 
             // card div
             var card = document.createElement('div')
@@ -65,40 +65,40 @@ function drawCards(driversArray){
             img.className = `img-fluid rounded-circle me-3`
             img.style.width = "80px"
             img.style.height = "80px"
-            if(driver.foto == null){
+            if(passanger.foto == null){
                 img.src = window.noPhoto
                 img.alt = "Sem foto"
             }else{
-                img.src = window.assets + "/" + driver.foto
-                img.alt = "Foto de " + driver.name
+                img.src = window.assets + "/" + passanger.foto
+                img.alt = "Foto de " + passanger.name
             }
             body.appendChild(img)
 
-            // driver info
+            // passanger info
 
-            // div for the drivers info
+            // div for the passanger info
             var infoDiv = document.createElement('div')
             infoDiv.className = `flex-grow-1`
             body.appendChild(infoDiv)
 
-            // driver name
+            // passanger name
             var name = document.createElement('h6')
             name.className = `fonteBold mb-1`
-            name.innerHTML = driver.name
+            name.innerHTML = passanger.name
             infoDiv.appendChild(name)
 
-            // driver curse
+            // passanger curse
             var curse = document.createElement('p')
             curse.className = `mb-1 text-muted`
-            curse.innerHTML = driver.curso
+            curse.innerHTML = passanger.curso
             infoDiv.appendChild(curse)
 
-            // driver distance
+            // passanger distance
             var distance = document.createElement('p')
             distance.className = `small text-muted`
 
             // convert the distance to km and round it to 2 decimal places
-            var kms = Math.round(driver.distance / 1000)
+            var kms = Math.round(passanger.distance / 1000)
             distance.innerHTML = kms + " km"
             infoDiv.appendChild(distance)
 
@@ -114,6 +114,7 @@ function drawCards(driversArray){
             btt.className = `btn cesae-purple`
             btt.innerHTML = "Dar feedback"
             btt.href = window.feedback
+            btt.target = '_blank';
             bttDiv.appendChild(btt)
 
             // space between the btts
@@ -126,7 +127,7 @@ function drawCards(driversArray){
             var btt = document.createElement('a')
             btt.className = `btn cesae-blue`
             btt.innerHTML = "Conversar"
-            btt.href = "https://teams.microsoft.com/l/chat/0/0?users=" + driver.email
+            btt.href = "https://teams.microsoft.com/l/chat/0/0?users=" + passanger.email
             btt.target = '_blank';
             bttDiv.appendChild(btt)
 
@@ -134,37 +135,38 @@ function drawCards(driversArray){
     });
 }
 
+
+
 document.addEventListener("DOMContentLoaded", async function () {
 
-    // creating the array to store the drivers
+    // creating the array to store the passanger
     // and the distance variable
-    let driversArray = []
+    let passengerArray = []
     let distance = 99999
 
-    //to get the distance for all the drivers to create the cards later
-    for (const element of window.drivers) {
+    //to get the distance for all the passanger to create the cards later
+    for (const element of window.passengers) {
 
             // call the getDistance function and wait for the result
             distance = await getDistance(element.morada, window.address);
 
-            // add the distance to the driver object
+            // add the distance to the passanger object
             element.distance = distance;
 
-            // push the driver object to the array
-            driversArray.push(element);
+            // push the passanger object to the array
+            passengerArray.push(element);
 
     }
 
-    //sort the drivers array by distance
-    driversArray.sort((a, b) => a.distance - b.distance);
+    //sort the passanger array by distance
+    passengerArray.sort((a, b) => a.distance - b.distance);
 
-    //create the cards for the drivers
-    drawCards(driversArray);
+    //create the cards for the passanger
+    drawCards(passengerArray);
 
     //just to see the result
-    console.log(driversArray);
+    console.log(passengerArray);
 
     //to hide the loading animation
     document.getElementById("preloader").style.display = "none";
 });
-

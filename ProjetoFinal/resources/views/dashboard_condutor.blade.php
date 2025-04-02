@@ -14,34 +14,36 @@
         </ol>
     </nav>
 
-    @foreach ($passengers as $currentPassenger)
-        <div class="card mb-3">
-            <div class="card-body d-flex align-items-center">
-                {{-- Foto passageiro --}}
-                @if ($currentPassenger->foto != null)
-                    <img src="{{ asset('storage/' . $currentPassenger->foto) }}" alt="Foto de {{ $currentPassenger->name }}"
-                    class="img-fluid rounded-circle me-3" width="80" height="80">
-                @else
-                    <img src="{{ asset('img/no-photo.jpg') }}" alt="Sem foto"
-                    class="img-fluid rounded-circle me-3" width="80" height="80">
-                @endif
+    <!-- Div do Preloader -->
+    <div id="preloader">
+        <br>
+        <div class="spinner"></div>
+        <br>
+    </div>
 
-                {{-- Informações do passageiro --}}
-                <div class="flex-grow-1">
-                    <h6 class="fonteBold mb-1">{{ $currentPassenger->name }}</h6>
-                    <p class="mb-1 text-muted">{{ $currentPassenger->curso }}</p>
-                    <p class="small text-muted">Distância: {{ $currentPassenger->distance }}</p>
-                </div>
+    <div id="passengersDiv">
 
-                {{-- Feedback, conversar --}}
-                <div>
-                    <a class="btn cesae-purple" href="{{ route('feedback.store') }}">Dar feedback</a>
-                    <a class="btn cesae-blue" href="#">Conversar</a>
-                </div>
-            </div>
-        </div>
-    @endforeach
+    </div>
+
+
 </div>
+
+<script>
+    window.passengers = @json($passengers);
+
+    window.address = @json($address);
+
+    window.assets = "{{ asset('storage/') }}";
+
+    window.noPhoto = "{{ asset('img/no-photo.jpg') }}";
+
+    window.feedback = "{{ route('feedback.store') }}"
+</script>
+
+<script src="{{ asset("js/driverView.js") }}"></script>
+
+{{-- css animation --}}
+<link rel="stylesheet" href="{{ asset('css/loading_animation.css') }}">
 
 @endsection
 

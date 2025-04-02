@@ -4,7 +4,7 @@
 
 <h1 class="fonteBold mt-5 text-center">Os Meus Matches</h1>
 
-<div class="container mt-4">
+<div class="container mt-4" id="userscards">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo e(route('home')); ?>">Home</a></li>
@@ -13,43 +13,12 @@
         </ol>
     </nav>
 
-
     <!-- Div do Preloader -->
     <div id="preloader">
+        <br>
         <div class="spinner"></div>
+        <br>
     </div>
-
-
-    <?php $__currentLoopData = $drivers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $currentDriver): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-
-        <div class="card mb-3">
-            <div class="card-body d-flex align-items-center">
-                
-
-                <?php if($currentDriver->foto != null): ?>
-                    <img src="<?php echo e(asset('storage/' . $currentDriver->foto)); ?>" alt="Foto de <?php echo e($currentDriver->name); ?>"
-                    class="img-fluid rounded-circle me-3" width="80" height="80">
-                <?php else: ?>
-                    <img src="<?php echo e(asset('img/no-photo.jpg')); ?>" alt="Sem foto"
-                    class="img-fluid rounded-circle me-3" width="80" height="80">
-                <?php endif; ?>
-
-
-                
-                <div class="flex-grow-1">
-                    <h6 class="fonteBold mb-1"><?php echo e($currentDriver->name); ?></h6>
-                    <p class="mb-1 text-muted"><?php echo e($currentDriver->curso); ?></p>
-                    
-                </div>
-
-                
-                <div>
-                    <a class="btn cesae-purple" href="<?php echo e(route('feedback.store')); ?>">Dar feedback</a>
-                    <a class="btn cesae-blue" href="#">Conversar</a>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
 
 </div>
@@ -58,6 +27,12 @@
     window.drivers = <?php echo json_encode($drivers, 15, 512) ?>;
 
     window.address = <?php echo json_encode($address, 15, 512) ?>;
+
+    window.assets = "<?php echo e(asset('storage/')); ?>";
+
+    window.noPhoto = "<?php echo e(asset('img/no-photo.jpg')); ?>";
+
+    window.feedback = "<?php echo e(route('feedback.store')); ?>"
 </script>
 
 <script src="<?php echo e(asset("js/passengerView.js")); ?>"></script>
