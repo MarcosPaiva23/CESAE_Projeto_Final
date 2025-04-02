@@ -97,7 +97,7 @@ function drawCards(passengerArray){
             var distance = document.createElement('p')
             distance.className = `small text-muted`
 
-            // convert the distance to km and round it to 2 decimal places
+            // convert the distance to km
             var kms = Math.round(passanger.distance / 1000)
             distance.innerHTML = kms + " km"
             infoDiv.appendChild(distance)
