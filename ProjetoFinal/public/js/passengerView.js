@@ -2,7 +2,8 @@
 
 async function getDistance(start, end) {
     //url for the api call
-    const url = "https://api.openrouteservice.org/v2/directions/driving-car";
+    //const url = "https://api.openrouteservice.org/v2/directions/driving-car";
+    const url = "http://95.136.103.115:8080/ors/v2/directions/driving-car";
 
     //the params for the api call
     //start and end are the coordinates of the start and end points
@@ -98,7 +99,7 @@ function drawCards(driversArray){
             distance.className = `small text-muted`
 
             // convert the distance to km and round it to 2 decimal places
-            var kms = Math.round(driver.distance / 1000)
+            var kms = (driver.distance / 1000).toFixed(2);
             distance.innerHTML = kms + " km"
             infoDiv.appendChild(distance)
 

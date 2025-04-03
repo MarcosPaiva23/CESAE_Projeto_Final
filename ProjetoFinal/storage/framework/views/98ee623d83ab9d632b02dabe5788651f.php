@@ -13,12 +13,6 @@
         </ol>
     </nav>
 
-
-    
-
-
-
-
     <!-- Div do Preloader -->
     <div id="preloader">
         <br>

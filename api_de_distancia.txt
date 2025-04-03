@@ -1,4 +1,5 @@
-http://localhost:8080/ors/v2/directions/driving-car?&start=8.681495,49.41461&end=8.687872,49.420318
+http://localhost:8080/ors/v2/directions/driving-car?&start=-8.509288560338636,41.11671475882823&end=-8.650245844992817,41.158730367551186
+http://localhost:8080/ors/v2/directions/driving-car?start=8.681495,49.41461&end=8.687872,49.420318
 
 
 
