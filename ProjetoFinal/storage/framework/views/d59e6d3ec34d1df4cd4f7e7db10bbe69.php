@@ -13,35 +13,38 @@
         </ol>
     </nav>
 
-    <?php $__currentLoopData = $passengers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $currentPassenger): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="card mb-3">
-            <div class="card-body d-flex align-items-center">
-                
-                <?php if($currentPassenger->foto != null): ?>
-                    <img src="<?php echo e(asset('storage/' . $currentPassenger->foto)); ?>" alt="Foto de <?php echo e($currentPassenger->name); ?>"
-                    class="img-fluid rounded-circle me-3" width="80" height="80">
-                <?php else: ?>
-                    <img src="<?php echo e(asset('img/no-photo.jpg')); ?>" alt="Sem foto"
-                    class="img-fluid rounded-circle me-3" width="80" height="80">
-                <?php endif; ?>
+    <!-- Div do Preloader -->
+    <div id="preloader">
+        <br>
+        <div class="spinner"></div>
+        <br>
+    </div>
 
-                
-                <div class="flex-grow-1">
-                    <h6 class="fonteBold mb-1"><?php echo e($currentPassenger->name); ?></h6>
-                    <p class="mb-1 text-muted"><?php echo e($currentPassenger->curso); ?></p>
-                    <p class="small text-muted">Distância: <?php echo e($currentPassenger->distance); ?></p>
-                </div>
+    <div id="passengersDiv">
 
-                
-                <div>
-                    <a class="btn cesae-purple" href="<?php echo e(route('feedback.store')); ?>">Dar feedback</a>
-                    <a class="btn cesae-blue" href="#">Conversar</a>
-                </div>
-            </div>
-        </div>
-    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+
+
 </div>
 
+<script>
+    window.passengers = <?php echo json_encode($passengers, 15, 512) ?>;
+
+    window.address = <?php echo json_encode($address, 15, 512) ?>;
+
+    window.assets = "<?php echo e(asset('storage/')); ?>";
+
+    window.noPhoto = "<?php echo e(asset('img/no-photo.jpg')); ?>";
+
+    window.feedback = "<?php echo e(route('feedback.store')); ?>"
+</script>
+
+<script src="<?php echo e(asset("js/driverView.js")); ?>"></script>
+
+
+<link rel="stylesheet" href="<?php echo e(asset('css/loading_animation.css')); ?>">
+
 <?php $__env->stopSection(); ?>
+
 
 <?php echo $__env->make('layout.main_layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\sw2024\Desktop\git\CESAE_Projeto_Final\ProjetoFinal\resources\views/dashboard_condutor.blade.php ENDPATH**/ ?>

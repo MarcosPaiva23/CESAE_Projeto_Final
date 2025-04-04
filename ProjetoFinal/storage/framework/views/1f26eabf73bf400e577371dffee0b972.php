@@ -1,8 +1,13 @@
 <?php $__env->startSection('content'); ?>
 
+
+
+    
     <?php if(session('error')): ?>
         <div class="alert alert-danger text-center">
             <h3><?php echo e(session('error')); ?></h3>
+
+
         </div>
         <br>
     <?php endif; ?>
@@ -10,6 +15,7 @@
     <?php if(session('message')): ?>
         <div class="alert alert-success text-center">
             <h3><?php echo e(session('message')); ?></h3>
+
         </div>
         <br>
     <?php endif; ?>
@@ -37,7 +43,10 @@
                         <li><strong>Gestão Personalizada:</strong> Organize as suas boleias e comunique com outros
                             participantes.</li>
                         <p>
-                        <li><strong>Feedback:</strong> Avalie e garanta segurança e confiança.</li>
+
+                            <li><strong>Feedback:</strong> Avalie e garanta segurança e confiança.</li>
+
+
                     </ul>
                 </div>
             </div>
@@ -52,6 +61,8 @@
                         <div class="menu mt-2 justify-content-center align-items-center">
                             <div class="container text-center">
                                 <ul class="list-unstyled d-inline-block text-start">
+
+
                                     <?php if(Auth::user()->is_admin == 1): ?>
                                         
                                         <li>
@@ -66,14 +77,14 @@
                                             <li>
                                                 <a href="<?php echo e(route('showPassengerTable')); ?>">
                                                     <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
-                                                    Meus Matches (Condutor)
+                                                    Meus Matches (Passageiro)
                                                 </a>
                                             </li>
                                         <?php else: ?>
                                             <li>
                                                 <a href="<?php echo e(route('showDriverTable')); ?>">
                                                     <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
-                                                    Meus Matches (Passageiro)
+                                                    Meus Matches (Condutor)
                                                 </a>
                                             </li>
                                         <?php endif; ?>
@@ -100,6 +111,7 @@
                                         </a>
                                         <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
                                             <?php echo csrf_field(); ?>
+
                                         </form>
                                     </li>
                                 </ul>

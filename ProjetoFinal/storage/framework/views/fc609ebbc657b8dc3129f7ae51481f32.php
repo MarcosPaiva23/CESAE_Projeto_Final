@@ -143,4 +143,4 @@
     <script src="<?php echo e(asset('js/settings.js')); ?>"></script>
 </body>
 </html>
-<?php /**PATH C:\Users\sw2024\Desktop\git\CESAE_Projeto_Final\ProjetoFinal\resources\views/layout/main_layout.blade.php ENDPATH**/ ?>
+<?php /**PATH /home/lince/Desktop/git/CESAE_Projeto_Final/ProjetoFinal/resources/views/layout/main_layout.blade.php ENDPATH**/ ?>

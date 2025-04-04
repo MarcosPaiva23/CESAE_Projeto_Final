@@ -1,80 +1,54 @@
 <?php $__env->startSection('content'); ?>
-<link rel="stylesheet" href="<?php echo e(asset('css/login&register.css')); ?>">
 
-<div class="container mt-4 mb-4">
-    <div class="row justify-content-center">
+<div class="icon-text-container">
+    <img src="<?php echo e(asset('img/feedback.png')); ?>" alt="feedback" class="icon-feedback">
+    <span class="feedback">Deixa aqui o teu feedback da viagem:</span>
+    <img src="<?php echo e(asset('img/feedback.png')); ?>" alt="feedback" class="icon-feedback">
+</div>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<?php echo e(route('home')); ?>">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+    </ol>
+</nav>
+
+<?php if(Auth::check()): ?>
+    <div class="d-flex justify-content-center align-items-center">
         <div class="col-md-6">
-            <?php if(Auth::check()): ?>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?php echo e(route('home')); ?>">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Feedback</li>
-                    </ol>
-                </nav>
+            <form action="<?php echo e(route('feedback.store')); ?>" method="POST" class="p-4 border rounded shadow bg-white">
+                <?php echo csrf_field(); ?>
 
-                <div class="card" style="min-height: fit-content;">
-                    <div class="card-header cesae-purple text-white">
-                        <h4 class="mb-0">Deixa aqui o teu feedback</h4>
-                    </div>
-                    <div class="card-body">
-                        <?php if(session('message')): ?>
-                            <div class="alert alert-success">
-                                <?php echo e(session('message')); ?>
-
-                            </div>
-                        <?php endif; ?>
-
-                        <?php $__errorArgs = ['error'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                            <div class="alert alert-danger">
-                                <?php echo e($message); ?>
-
-                            </div>
-                        <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-
-                        <form action="<?php echo e(route('feedback.store')); ?>" method="POST">
-                            <?php echo csrf_field(); ?>
-
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Email: </label>
-                                <input type="email" class="form-control" id="email" name="email" value="<?php echo e(Auth::user()->email); ?>" readonly>
-                            </div>
-
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Assunto: </label>
-                                <input type="text" class="form-control" id="subject" name="subject" required>
-                            </div>
-
-                            
-                            <div class="mb-3">
-                                <label class="form-label">Comentários: </label>
-                                <textarea class="form-control" id="comment" name="comment" style="height: 100px" required></textarea>
-                            </div>
-
-                            
-                            <div class="d-grid">
-                                <button type="submit" class="btn cesae-blue">Enviar Feedback</button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" name="email"
+                           value="<?php echo e(Auth::user()->email); ?>" readonly>
+                    <label for="floatingInput">Email:</label>
                 </div>
-            <?php else: ?>
-                <div class="alert alert-warning d-flex align-items-center" role="alert">
-                    <img src="<?php echo e(asset('img/warning.png')); ?>" alt="Warning" class="icon-login me-2">
-                    <span>Precisas de fazer <a href="<?php echo e(route('login')); ?>">login</a> para deixares feedback.</span>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="Insira o assunto" id="floatingInput2" name="subject" required>
+                    <label for="floatingInput2">Assunto:</label>
                 </div>
-            <?php endif; ?>
+
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="Insira o seu comentário" id="floatingTextarea2" name="comment" style="height: 100px" required></textarea>
+                    <label for="floatingTextarea2">Comentários:</label>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-100">Enviar Feedback</button>
+            </form>
         </div>
     </div>
-</div>
+<?php else: ?>
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <img src="<?php echo e(asset('img/warning.png')); ?>" alt="Warning" class="icon-login me-2">
+        <span>Precisas de fazer <a href="<?php echo e(route('login')); ?>">login</a> para deixares um feedback.</span>
+    </div>
+<?php endif; ?>
+
+<br>
+<br>
+
 <?php $__env->stopSection(); ?>
- 
+
 <?php echo $__env->make('layout.main_layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\sw2024\Desktop\git\CESAE_Projeto_Final\ProjetoFinal\resources\views/feedback.blade.php ENDPATH**/ ?>

@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersSeeder::class);
 
         // creation of the simulated users
-        User::factory(50)->create();
+        User::factory(100)->create();
 
         // creation of the simulated days
-        DiasViagem::factory(52)->create();
+        DiasViagem::factory(102)->create();
 
     }
 }

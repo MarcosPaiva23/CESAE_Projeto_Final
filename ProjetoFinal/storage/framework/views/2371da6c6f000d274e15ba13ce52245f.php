@@ -1,31 +1,30 @@
-@extends('layout.main_layout')
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
 
-    {{-- To show messages and erros coming from other pages o redirect to home --}}
-    @if (session('error'))
+    
+    <?php if(session('error')): ?>
         <div class="alert alert-danger text-center">
-            <h3>{{session('error')}}</h3>
+            <h3><?php echo e(session('error')); ?></h3>
 
 
         </div>
         <br>
-    @endif
+    <?php endif; ?>
 
-    @if (session('message'))
+    <?php if(session('message')): ?>
         <div class="alert alert-success text-center">
-            <h3>{{ session('message') }}</h3>
+            <h3><?php echo e(session('message')); ?></h3>
 
         </div>
         <br>
-    @endif
+    <?php endif; ?>
 
     <div class="container mt-4">
         <div class="row">
             <div class="col-md">
                 <div class="conteudo">
-                    <h6><img src="{{ asset('img/ride-hailing.png') }}" alt="Ride" class="icon-ride">Bem-vindo ao CESAE Boleias!</h6>
+                    <h6><img src="<?php echo e(asset('img/ride-hailing.png')); ?>" alt="Ride" class="icon-ride">Bem-vindo ao CESAE Boleias!</h6>
                     <br>
 
                     <p>O CESAE Boleias é uma plataforma inovadora desenvolvida para facilitar a partilha de transporte entre
@@ -52,8 +51,8 @@
                 </div>
             </div>
 
-            @if (Route::has('login'))
-                @auth
+            <?php if(Route::has('login')): ?>
+                <?php if(auth()->guard()->check()): ?>
                     <div class="col-md">
                         <div class="barra mt-4 text-center">
                             <h5>O que pretendes fazer hoje?</h5>
@@ -64,54 +63,54 @@
                                 <ul class="list-unstyled d-inline-block text-start">
 
 
-                                    @if(Auth::user()->is_admin == 1)
-                                        {{-- Menu de Admin --}}
+                                    <?php if(Auth::user()->is_admin == 1): ?>
+                                        
                                         <li>
-                                            <a href="{{ route('admin_dashboard') }}">
-                                                <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                            <a href="<?php echo e(route('admin_dashboard')); ?>">
+                                                <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                                 Painel Administrador
                                             </a>
                                         </li>
-                                    @else
-                                        {{-- Menu de user normal --}}
-                                        @if(Auth::user()->tem_carro == 0)
+                                    <?php else: ?>
+                                        
+                                        <?php if(Auth::user()->tem_carro == 0): ?>
                                             <li>
-                                                <a href="{{ route('showPassengerTable') }}">
-                                                    <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                                <a href="<?php echo e(route('showPassengerTable')); ?>">
+                                                    <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                                     Meus Matches (Passageiro)
                                                 </a>
                                             </li>
-                                        @else
+                                        <?php else: ?>
                                             <li>
-                                                <a href="{{ route('showDriverTable') }}">
-                                                    <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                                <a href="<?php echo e(route('showDriverTable')); ?>">
+                                                    <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                                     Meus Matches (Condutor)
                                                 </a>
                                             </li>
-                                        @endif
+                                        <?php endif; ?>
 
                                         <li>
-                                            <a href="{{ route('feedback') }}">
-                                                <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                            <a href="<?php echo e(route('feedback')); ?>">
+                                                <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                                 Deixar Feedback
                                             </a>
                                         </li>
 
                                         <li>
                                             <a href="#" data-bs-toggle="modal" data-bs-target="#settingsModal">
-                                                <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                                <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                                 Definições
                                             </a>
                                         </li>
-                                    @endif
+                                    <?php endif; ?>
 
                                     <li>
-                                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                        <a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
                                             Logout
                                         </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
+                                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                            <?php echo csrf_field(); ?>
 
                                         </form>
                                     </li>
@@ -119,8 +118,10 @@
                             </div>
                         </div>
                     </div>
-                @endauth
-            @endif
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layout.main_layout', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /home/lince/Desktop/git/CESAE_Projeto_Final/ProjetoFinal/resources/views/home.blade.php ENDPATH**/ ?>
