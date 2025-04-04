@@ -12,21 +12,18 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FeedbackController;
 
-use App\Http\Controllers\SettingsController;
-
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardDriverController;
 
-Route::get('/', [HomeController::class, 'index']) -> name('home');
+use App\Http\Controllers\SettingsController;
 
+// Rota Principal
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// Rotas Admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard')->middleware(['auth', AdminMiddleware::class]);
-Route::get('/admin/delete/{id}', [AdminController::class, 'blockUserAccess'])->name('blockUserAccess') -> middleware(Suspended::class);
-
-Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback') -> middleware(['auth', Suspended::class]);
-Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store') -> middleware(['auth', Suspended::class]);
-
-Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.create');//->middleware(['auth', 'admin'])
-
+Route::get('/admin/delete/{id}', [AdminController::class, 'blockUserAccess'])->name('blockUserAccess')->middleware(Suspended::class);
+Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.create')->middleware(['auth', AdminMiddleware::class]);
 Route::post('/store-admin', [AdminController::class, 'store'])->name('admin.store');
 
 Route::get('feedback', [FeedbackController::class, 'create'])->name('feedback')->middleware(['auth', Suspended::class]);
@@ -47,37 +44,16 @@ Route::get('/settings', [SettingsController::class, 'index'])->name('settings.in
 // Página Sobre
 Route::get('about', [AboutController::class, 'index'])->name('about');
 
+// Dashboards
+Route::get('/dashboard-condutor', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable') -> middleware(['auth', Suspended::class]);
+Route::get('/dashboard-passageiro', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable') -> middleware(['auth', Suspended::class]);
 
-Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable') -> middleware(['auth', Suspended::class]);
+// Rotas para autenticação e registro
+Route::get('/register', [UserController::class, 'viewRegister'])->name('register')->middleware(Suspended::class);
+Route::post('/create-users', [UserController::class, 'createUser'])->name('users.create')->middleware(Suspended::class);
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 
-Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable') -> middleware(['auth', Suspended::class]);
-
-
-
-Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
-
-Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
-
-
-Route::get('/dashboard-passageiro', [DashboardController::class, 'showDriverTable'])->name('showDriverTable');
-
-Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
-
-
-Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
-
-
-
-//rotas para autenticação e registro
-Route::get('/register', [UserController::class, 'viewRegister'] )->name('register') -> middleware(Suspended::class);
-
-Route::post('/create-users', [UserController::class, 'createUser'] )->name('users.create') -> middleware(Suspended::class);
-
-//route for user email verification
-Route::get('/email/verify/{id}/{hash}', [UserController::class, 'verifyUserEmail'])->name('verification.verify') -> middleware(Suspended::class);
-
-//route for the user ask for a new email verification link
-//Route::get('/email-verification-expired', [UserController::class, 'expiredVerification'] )->name('verification.expired');
-
-Route::POST('/email/resend', [UserController::class, 'verifyUserEmailResend'])->name('verification.resend') -> middleware(Suspended::class);
+// Verificação de email
+Route::get('/email/verify/{id}/{hash}', [UserController::class, 'verifyUserEmail'])->name('verification.verify')->middleware(Suspended::class);
+Route::post('/email/resend', [UserController::class, 'verifyUserEmailResend'])->name('verification.resend')->middleware(Suspended::class);
 
