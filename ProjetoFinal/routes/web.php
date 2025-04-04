@@ -20,22 +20,11 @@ Route::get('/admin/delete/{id}', [AdminController::class, 'blockUserAccess'])->n
 
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 
-Route::get('feedback', [FeedbackController::class, 'index'])->name('feedback') -> middleware(['auth', Suspended::class]);
-Route::post('feedback', [FeedbackController::class, 'store'])->name('feedback.store') -> middleware(['auth', Suspended::class]);
 
 
 
 use App\Http\Controllers\SettingsController;
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardDriverController;
-
-
-
-
-
-
-Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard');//->middleware(['auth', 'admin']);
 
 Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.create');//->middleware(['auth', 'admin'])
 
@@ -58,17 +47,12 @@ Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTab
 
 
 
-Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
-
-Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
 
 
-Route::get('/dashboard-passageiro', [DashboardController::class, 'showDriverTable'])->name('showDriverTable');
 
 Route::get('/dashboard-passageiro', [DashboardDriverController::class, 'showDriverTable'])->name('showDriverTable');
 
 
-Route::get('/dashboard-condutor', [DashboardController::class, 'showPassengerTable'])->name('showPassengerTable');
 
 
 
