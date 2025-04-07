@@ -72,6 +72,12 @@
                                                 Painel Administrador
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{ route('admin.create') }}">
+                                            <img src="{{ asset('img/seta.png') }}" alt="Arrow" class="icon-arrow">
+                                                                                            Adicionar Admins
+                                            </a>
+                                        </li>
                                     @else
                                         {{-- Menu de user normal --}}
                                         @if(Auth::user()->tem_carro == 0)

@@ -24,6 +24,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Rotas Admin
 Route::get('/admin', [AdminController::class, 'index'])->name('admin_dashboard')->middleware(['auth', AdminMiddleware::class]);
 Route::get('/admin/delete/{id}', [AdminController::class, 'blockUserAccess'])->name('blockUserAccess')->middleware(Suspended::class);
+Route::get('/admin/unblock/{id}', [AdminController::class, 'unblockUserAccess'])->name('unblockUserAccess')->middleware(Suspended::class);
 Route::get('/create-admin', [AdminController::class, 'create'])->name('admin.create')->middleware(['auth', AdminMiddleware::class]);
 Route::post('/store-admin', [AdminController::class, 'store'])->name('admin.store');
 

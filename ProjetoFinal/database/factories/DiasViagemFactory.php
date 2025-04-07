@@ -21,11 +21,16 @@ class DiasViagemFactory extends Factory
 
         return [
             'user_id' => $user_id++,
-            'segunda' => $this->faker->boolean,
-            'terca' => $this->faker->boolean,
-            'quarta' => $this->faker->boolean,
-            'quinta' => $this->faker->boolean,
-            'sexta' => $this->faker->boolean,
+            // 'segunda' => $this->faker->boolean,
+            // 'terca' => $this->faker->boolean,
+            // 'quarta' => $this->faker->boolean,
+            // 'quinta' => $this->faker->boolean,
+            // 'sexta' => $this->faker->boolean,
+            'segunda' => 1,
+            'terca' => 1,
+            'quarta' => 1,
+            'quinta' => 1,
+            'sexta' => 1,
         ];
     }
 }
