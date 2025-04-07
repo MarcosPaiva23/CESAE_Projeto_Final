@@ -22,8 +22,14 @@ class AdminController extends Controller
 
     public function blockUserAccess($id){
         DB::table('users')->where('id', $id)->update(['is_blocked' => 1]);
-        return back();
+        return back()->with('message','Conta bloqueada com sucesso.');
     }
+
+    public function unblockUserAccess($id){
+        DB::table('users')->where('id', $id)->update(['is_blocked' => 0]);
+        return back()->with('message','Conta desbloqueada com sucesso.');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -51,7 +57,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'curso' => "admin",
-            'data_conclusao' => "0000-00-00",
+            'data_conclusao' => "2020-01-01",
             'horario' => 9,
             'tem_carro' => 9,
             'morada' => "admin",
@@ -66,7 +72,7 @@ class AdminController extends Controller
         //send the email verification
         $user->sendEmailVerificationNotification();
 
-        return back()->with('message','Conta criada com sucesso.');
+        return back()->with('message','Conta criada com sucesso. Peça para que verifiquem o email antes de fazer login.');
     }
 
     /**

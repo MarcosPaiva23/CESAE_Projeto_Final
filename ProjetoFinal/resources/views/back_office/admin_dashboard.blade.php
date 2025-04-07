@@ -2,6 +2,13 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
+@if (session('message'))
+        <div class="alert alert-success text-center">
+            <h3>{{ session('message') }}</h3>
+        </div>
+        <br>
+@endif
+
 <div class="container mt-4">
     <div class="card">
         <div class="card-header cesae-purple text-white">
@@ -38,9 +45,16 @@
                             <td>{{ $user->curso }}</td>
                             <td>{{ $user->tem_carro ? 'Sim' : 'Não' }}</td>
                             <td>
-                                <a class="btn btn-danger" href="{{ route('blockUserAccess', $user->id) }}">
-                                    Bloquear Acesso
-                                </a>
+                                @if ($user->is_blocked)
+                                    <a class="btn cesae-blue" href="{{ route('unblockUserAccess', $user->id) }}" style="width: 80%">
+                                        Desbloquear Acesso
+                                    </a>
+                                @else
+                                    <a class="btn btn-danger" href="{{ route('blockUserAccess', $user->id) }}" style="width: 80%">
+                                        Bloquear Acesso
+                                    </a>
+                                @endif
+
                             </td>
                         </tr>
                         @endforeach

@@ -3,7 +3,7 @@
 async function getDistance(start, end) {
     //url for the api call
     //const url = "https://api.openrouteservice.org/v2/directions/driving-car";
-    const url = "http://149.88.20.135:8080/ors/v2/directions/driving-car";
+    const url = "http://89.114.116.19:8080/ors/v2/directions/driving-car";
 
     //the params for the api call
     //start and end are the coordinates of the start and end points
@@ -19,7 +19,7 @@ async function getDistance(start, end) {
         const response = await fetch(`${url}?${params.toString()}`, {
             method: "GET",
             headers: {
-                "User-Agent": "CesaeBoleias/1.2 (suporte.cesae.boleias@gmail.com)"
+                "User-Agent": "suporte.cesae.boleias@gmail.com"
             }
         });
 

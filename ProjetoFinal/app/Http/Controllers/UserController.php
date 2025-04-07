@@ -25,7 +25,7 @@ class UserController extends Controller
         //validate the request data
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => 'required|email|max:255|unique:users|regex:/@msft\.cesae\.pt$/',
             'password' => 'required|max:255',
             'course' => 'required|max:255',
             'completion_date' => 'required|date',

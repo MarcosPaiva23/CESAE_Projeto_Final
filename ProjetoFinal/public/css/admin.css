@@ -9,12 +9,12 @@
   }
 
 .cesae-blue {
-    background-color: #00a8e8;
+    background-color: #0077b6;
     color: white
 }
 
 .cesae-blue:hover {
-    background-color: #0077b6;
+    background-color: #36b1e2d7;
     color: white;
   }
 
@@ -78,3 +78,4 @@
     background-color: #dc3545;
     border-color: #dc3545;
 }
+
