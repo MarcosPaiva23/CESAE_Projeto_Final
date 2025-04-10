@@ -29,7 +29,7 @@
 </div>
 
 <script>
-    window.passengers = @json($passengers);
+    window.passengers = @json($matches);
 
     window.address = @json($address);
 
