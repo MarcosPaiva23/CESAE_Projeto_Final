@@ -78,6 +78,29 @@ unset($__errorArgs, $__bag); ?>
             </div>
 
 
+    
+    <?php if(session('message')): ?>
+    <div class="alert alert-success text-center">
+        <h3><?php echo e(session('message')); ?></h3>
+    </div>
+    <br>
+    <?php endif; ?>
+
+    <?php $__errorArgs = ['error'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+        <div class="alert alert-danger text-center">
+            <h3><?php echo e($message); ?></h3>
+        </div>
+        <br>
+    <br>
+    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+
 
 
     </div>

@@ -1,13 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <link rel="stylesheet" href="<?php echo e(asset('css/admin.css')); ?>">
 
-<?php if(session('message')): ?>
-        <div class="alert alert-success text-center">
-            <h3><?php echo e(session('message')); ?></h3>
-        </div>
-        <br>
-<?php endif; ?>
-
 <div class="container mt-4">
     <div class="card">
         <div class="card-header cesae-purple text-white">
@@ -44,16 +37,9 @@
                             <td><?php echo e($user->curso); ?></td>
                             <td><?php echo e($user->tem_carro ? 'Sim' : 'Não'); ?></td>
                             <td>
-                                <?php if($user->is_blocked): ?>
-                                    <a class="btn cesae-blue" href="<?php echo e(route('unblockUserAccess', $user->id)); ?>" style="width: 80%">
-                                        Desbloquear Acesso
-                                    </a>
-                                <?php else: ?>
-                                    <a class="btn btn-danger" href="<?php echo e(route('blockUserAccess', $user->id)); ?>" style="width: 80%">
-                                        Bloquear Acesso
-                                    </a>
-                                <?php endif; ?>
-
+                                <a class="btn btn-danger" href="<?php echo e(route('blockUserAccess', $user->id)); ?>">
+                                    Bloquear Acesso
+                                </a>
                             </td>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

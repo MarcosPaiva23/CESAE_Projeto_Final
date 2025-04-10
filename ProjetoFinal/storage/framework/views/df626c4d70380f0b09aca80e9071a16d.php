@@ -110,10 +110,10 @@
                     <h5>Links Úteis</h5>
                     <br>
                     <ul class="list-unstyled">
-                        <li><a href="https://www.cesaedigital.pt/" class="text-white" target="_blank">CESAE Digital</a></li>
-                        <li><a href="/feedback" class="text-white" target="_blank">Feedback</a></li>
-                        <li><a href="/terms" class="text-white" target="_blank">Termos de Uso</a></li>
-                        <li><a href="/privacy" class="text-white" target="_blank">Política de Privacidade</a></li>
+                        <li><a href="https://www.cesaedigital.pt/" class="text-white">CESAE Digital</a></li>
+                        <li><a href="/feedback" class="text-white">Feedback</a></li>
+                        <li><a href="/terms" class="text-white">Termos de Uso</a></li>
+                        <li><a href="/privacy" class="text-white">Política de Privacidade</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
@@ -121,9 +121,9 @@
                     <br>
                     <p>Se tiveres dúvidas ou sugestões, entra em contacto connosco!</p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/CesaeDigital/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/cesae.digital/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/school/cesae-digital/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/CesaeDigital/"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/cesae.digital/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/cesae-digital/"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>

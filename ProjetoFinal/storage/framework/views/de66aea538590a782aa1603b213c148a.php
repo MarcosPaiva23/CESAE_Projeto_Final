@@ -71,18 +71,6 @@
                                                 Painel Administrador
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="<?php echo e(route('admin.create')); ?>">
-                                            <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
-                                                                                            Adicionar Admins
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo e(route('back_office.ver_feedback')); ?>">
-                                            <img src="<?php echo e(asset('img/seta.png')); ?>" alt="Arrow" class="icon-arrow">
-                                                                                            Ver feedback
-                                            </a>
-                                        </li>
                                     <?php else: ?>
                                         
                                         <?php if(Auth::user()->tem_carro == 0): ?>
