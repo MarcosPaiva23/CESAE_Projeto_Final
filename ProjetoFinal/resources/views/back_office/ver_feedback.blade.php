@@ -8,7 +8,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h2>Gestão de Feedback</h2>
+                    <h2 class="h2-white">Gestão de Feedback</h2>
                 </div>
                 <div class="card-body">
                     @if (session()->has('success'))
